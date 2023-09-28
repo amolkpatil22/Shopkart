@@ -1,5 +1,5 @@
 
-{
+
   "footwears":[
     {
       "id": 1,
@@ -363,8 +363,4 @@
   
 }
 ]
-  ,
-  "furniture": {
-    "name": "typicode"
-  }
 }
