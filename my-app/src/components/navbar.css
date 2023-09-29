@@ -1,0 +1,33 @@
+#navbar {
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+
+}
+
+#topbar {
+    font-size: small;
+    width: 100%;
+    justify-content: space-between;
+    margin: auto;
+    background-color: rgb(0,61,41);
+    text-align: center;
+    align-items: center;
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+   
+}
+#topbar select{
+    font-size: small;
+   
+}
+
+
+#topbar option {
+    padding: 5px;
+    color: black;
+    font-size: small;
+}
