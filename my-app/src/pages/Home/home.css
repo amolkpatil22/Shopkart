@@ -1,0 +1,11 @@
+#banner {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./bg.jpg");
+    background-size: cover;
+    background-repeat: 'no-repeat';
+    height: 600px;   
+    justify-content: center;
+
+}
+
