@@ -4,8 +4,57 @@
     background-image: url("./bg.jpg");
     background-size: cover;
     background-repeat: 'no-repeat';
-    height: 600px;   
+    height: 600px;
     justify-content: center;
 
 }
+
+.categoryHeading {
+    padding-top: 20px !important;
+    text-align: center;
+    color: white;
+    font-weight: 600 !important;
+    width: 190px;
+    height: 240px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px !important;
+    background-size: 100%;
+    transition: background-size 0.3s ease-in-out !important;
+    cursor: pointer;
+    background-position: center;
+}
+
+
+.categoryHeading:hover {
+    background-position: center;
+    background-size: 120%;
+}
+
+.itemgrid{
+display: grid;
+grid-template-columns: repeat(5,1fr);
+overflow-x: auto;
+gap: 20px;
+scrollbar-width: none;   
+}
+.itemgrid::-webkit-scrollbar{
+    display: none;
+}
+
+.itembox{
+padding: 10px;
+display: flex;
+flex-direction: column;
+border: solid red;
+width: 400px;
+align-items: center;
+
+}
+
+
+
+
+
+
 
