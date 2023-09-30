@@ -1,5 +1,7 @@
 import { Box, Button, Center, Flex, Grid, Heading, Image, Text, border } from "@chakra-ui/react"
 import "./home.css"
+import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
+import { useRef } from "react"
 
 const dummy = [
     {
@@ -8,10 +10,7 @@ const dummy = [
         "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5507951bbfbe_homepad-mini-min.png",
         "price": 239.00,
         "color": "Table with air purifier, stained veneer/black",
-        "rating": {
-            "stars": 5,
-            "total": 121
-        }
+        "rating": 4
     },
     {
         "id": 2,
@@ -19,10 +18,7 @@ const dummy = [
         "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5537881bbfcf_instax%20mini%209-min.png",
         "price": 99.00,
         "color": "Selfie mode and selfie mirror, Macro mode",
-        "rating": {
-            "stars": 5,
-            "total": 121
-        }
+        "rating": 5
     },
     {
         "id": 3,
@@ -30,10 +26,7 @@ const dummy = [
         "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e48b497e63cc46b800_base%20camp%20duffel%2002-min.png",
         "price": 159.00,
         "color": "Table with air purifier, stained veneer/black",
-        "rating": {
-            "stars": 5,
-            "total": 121
-        }
+        "rating": 3
     },
     {
         "id": 4,
@@ -41,10 +34,9 @@ const dummy = [
         "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e7e006821d3b04db74_Tote%20Medium-min.png",
         "price": 239.00,
         "color": "Canvas, full grain leather",
-        "rating": {
-            "stars": 5,
-            "total": 121
-        }
+        "rating": 5,
+
+
     },
     {
         "id": 5,
@@ -52,15 +44,24 @@ const dummy = [
         "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e54b76914b262f2448_headphone-min.png",
         "price": 239.00,
         "color": "Table with air purifier, stained veneer/black",
-        "rating": {
-            "stars": 5,
-            "total": 121
-        }
+        "rating": 4
     }
 ]
 
 
 export const Home = () => {
+    let ref = useRef(null)
+
+    const handle = (e) => {
+        let itemgrid = ref.current
+        if (e.target.id == "previcon") {
+            itemgrid.scrollBy({ left: -500, behavior: "smooth" })
+        }
+        else {
+            itemgrid.scrollBy({ left: 500, behavior: "smooth" })
+        }
+    }
+
 
     return (
         <Box >
@@ -86,19 +87,25 @@ export const Home = () => {
             </Box>
 
 
-            <Box marginTop={"100px"}>
+            <Box marginTop={"100px"}  >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
-                <Grid className="itemgrid">
+                <Grid className="itemgrid" ref={ref}>
+                    <ChevronLeftIcon className="icon" id="previcon" onClick={handle} />
                     {dummy?.map((e) => {
                         return (
-                            <Box className="itembox" >
-                                <Image src={e.image} />
-                                <h4>{e.title}</h4>
-                                <Text></Text>
-                                <Button>Add to Cart</Button>
+                            <Box className="itembox" padding={"20px"}  >
+                                <Image src={e.image} width={"90%"} />
+                                <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
+                                    <Heading fontSize={"xl"}>{e.title}</Heading>
+                                    <Heading fontSize={"xl"}>${e.price}</Heading>
+                                </Flex >
+                                <Text  width={"90%"} marginBottom={"10px"}>{e.color}</Text>
+
+                                <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}
+                    <ChevronRightIcon className="icon" id="nexticon" onClick={handle} />
                 </Grid>
             </Box>
 
@@ -107,6 +114,7 @@ export const Home = () => {
             <Box marginTop={"100px"}>
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
                 <Grid gridTemplateColumns={"repeat(5,1fr)"} overflowX={"auto"} gap={"20px"} >
+
                     {dummy?.map((e) => {
                         return (
                             <Box display={"flex"} flexDirection={"column"} border={"solid red"} width={"400px"} alignItems={"center"} >
@@ -117,6 +125,7 @@ export const Home = () => {
                             </Box>
                         )
                     })}
+
                 </Grid>
             </Box>
 
