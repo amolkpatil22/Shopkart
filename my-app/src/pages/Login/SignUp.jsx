@@ -18,18 +18,40 @@ import {
   import { useState } from 'react'
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
   import { useNavigate } from 'react-router-dom'
+import { setLocalUserData } from '../../utilis/LocalStorage'
   
   export const SignupCard = () => {
+    const initialData ={
+    first_name:"",
+    last_name:"",
+    email:"",
+    password:""
+    }
+    const [data,setData]=useState(initialData)
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const { toggleColorMode } = useColorMode(); 
-    const handleLogin = () => {
+    const oldUser = () => {
       navigate("/login")
     }
+    const handleChange=(e)=>{
+      const {name,value}=e.target
+
+    setData((pre)=>{
+     return {...pre,[name]:value}
+    })
+    }
+  
+    const handleSignUp=()=>{
+      setLocalUserData(data.email,data)
+      navigate("/login")
+    }
+ 
+    const {first_name,last_name,email,password}=data
   
     return (
       <Flex
-        minH={'100vh'}
+        minH={'50vh'}
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.100', 'gray.800')}>
@@ -49,29 +71,29 @@ import {
                 <Box flex={1}>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" name='first_name' value={first_name} onChange={handleChange} />
                   </FormControl>
                 </Box>
                 <Box flex={1}>
                   <FormControl id="lastName">
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text"  name='last_name' value={last_name} onChange={handleChange}/>
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" name='email' value={email} onChange={handleChange}/>
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
+                  <Input type={showPassword ? 'text' : 'password'} name='password' value={password} onChange={handleChange}/>
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
                       onClick={() => setShowPassword((showPassword) => !showPassword)}
-                      colorScheme="blue">
+                      colorScheme="#003d29">
                       {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
@@ -80,19 +102,23 @@ import {
               <Stack spacing={6} pt={2}>
                 <Button
                   loadingText="Submitting"
-                  colorScheme={'teal'}
                   variant={'solid'}
-                  _hover={{
-                    bg: 'teal.600',
+                  style={{
+                    backgroundColor: '#003d29', 
+                    color: 'white',
+                    transition: 'background-color 0.2s, opacity 0.2s', 
                   }}
-                  onClick={() => navigate("/login")}
-                >
+                  _hover={{
+                    backgroundColor: 'rgb(0,61,41)', 
+                    opacity: 0.6, 
+                  }}
+                  onClick={handleSignUp}>
                   Sign up
                 </Button>
               </Stack>
               <Stack pt={6}>
                 <Text align={'center'}>
-                  Already a user? <Link color={'teal.600'} onClick={handleLogin}>Login</Link>
+                  Already a user? <Link color={'teal.600'} onClick={oldUser}>Login</Link>
                 </Text>
               </Stack>
               <Box textAlign="center">

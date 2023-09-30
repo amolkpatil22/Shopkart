@@ -35,7 +35,7 @@ export const Navbar = () => {
                 <Input width={"25%"} borderRadius={"20px"} borderColor={"grey"} placeholder="Search Product"></Input>
                 <Flex>
                     <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb3dec9d6ee83660ebe1de_user.png" />
-                    <Link to="/account">Account</Link>
+                    <Link to="/login">Account</Link>
                 </Flex>
                 <Flex>
                     <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb3dec9b865e78d4ff6b8d_shopping-cart-add.png" />

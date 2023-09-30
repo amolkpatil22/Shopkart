@@ -5,7 +5,7 @@ const initialState={
     isAuth:false,
     isLoading:false,
     isError:false,
-    emailL:"",
+    emailL:  "",
     password:""
 }
 export const  loginReducer= (state=initialState,{type,payload})=>{
