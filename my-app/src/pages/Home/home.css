@@ -31,30 +31,49 @@
     background-size: 120%;
 }
 
-.itemgrid{
-display: grid;
-grid-template-columns: repeat(5,1fr);
-overflow-x: auto;
-gap: 20px;
-scrollbar-width: none;   
-}
-.itemgrid::-webkit-scrollbar{
-    display: none;
-}
-
-.itembox{
-padding: 10px;
-display: flex;
-flex-direction: column;
-border: solid red;
-width: 400px;
-align-items: center;
+.itemgrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: auto;
+    gap: 20px;
+    scrollbar-width: none;
+    overflow-x: auto;
+    align-items: center;
+  width: 80%;
+  margin: auto;
 
 }
 
+.itemgrid::-webkit-scrollbar {
+    scroll-behavior: smooth;
+}
+
+.itembox {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;    
+    width: 400px;
+    align-items: left;
+ 
+}
 
 
+#previcon {
+    left: 8%;
+}
+
+#nexticon {
+    right: 8%;
+}
 
 
+.icon {
+    position: absolute;
+    background-color: black;
+    color: white !important;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 10px;
 
-
+}
