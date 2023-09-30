@@ -15,6 +15,7 @@ import {
 
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from "@chakra-ui/icons"
+import { Link } from 'react-router-dom'
 
 
 export const Category = () => {
@@ -33,7 +34,7 @@ export const Category = () => {
                             src='https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63ec6052dc39b839500c1f8a_Rectangle%201436.png'
                             mr='12px'
                         />
-                        <Heading size={"m"}>Furniture</Heading>
+                       <Link to="/furnitureslist"> <Heading size={"m"}>Furniture</Heading></Link>
                     </MenuItem>
                     <MenuItem minH='40px'>
                         <Image
@@ -42,7 +43,7 @@ export const Category = () => {
                             src='https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63ec6053e5b15cfafd550cbb_Rectangle%201436-3.png'
                             mr='12px'
                         />
-                        <Heading size={"m"}>Electronics</Heading>
+                       <Link to="/electronicslist"> <Heading size={"m"}>Electronics</Heading></Link>
                     </MenuItem>
                     <MenuItem minH='40px'>
                         <Image
@@ -60,7 +61,7 @@ export const Category = () => {
                             src='https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63ec6052f0ed215b864af96e_Rectangle%201436-1.png'
                             mr='12px'
                         />
-                        <Heading size={"m"}>Shoes</Heading>
+                      <Link to="/footwearslist">  <Heading size={"m"}>FootWear</Heading></Link>
                     </MenuItem>
                     <MenuItem minH='40px'>
                         <Image
