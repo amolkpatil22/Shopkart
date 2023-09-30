@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -27,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install-all": "npm install react-router-dom axios react-redux redux redux-thunk",
+    "install-all": "npm install react-router-dom axios react-redux redux redux-thunk ",
     "server": "json-server --watch db.json --port 8080"
   },
   "eslintConfig": {
