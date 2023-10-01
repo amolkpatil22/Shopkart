@@ -87,7 +87,12 @@ export const Home = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    num = num + 1
+                    if(num==29){
+                        num=num-1
+                    }
+                    else{
+                        num=num+1
+                    }
                 }
                 newdata.push(product[num])
                 prev = num
