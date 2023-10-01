@@ -2,14 +2,14 @@ import { Box, Flex, Grid, Heading, Icon, Image, Input, Select, Spacer } from "@c
 import { Link } from "react-router-dom"
 import { Category } from "./category"
 import "./navbar.css"
-import { useSelector } from "react-redux"
+import { shallowEqual, useSelector } from "react-redux"
 
 
 export const Navbar = () => {
 
     const {isAuth,name}=useSelector((store)=>{
         return {isAuth:store.loginReducer.isAuth,name:`${store.loginReducer.userSuccessData.first_name} ${store.loginReducer.userSuccessData.last_name} `}
-      })
+      },shallowEqual)
     return (
         <Box>
             <Flex id="topbar">

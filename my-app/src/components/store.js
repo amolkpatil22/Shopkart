@@ -4,12 +4,10 @@ import {reducer as productReducer} from "../pages/Products/ProductReducer/reduce
 const { legacy_createStore, combineReducers, applyMiddleware } = require("redux");
 
 
-
-
-
 const rootReducer=combineReducers({
 productReducer,
 loginReducer
 })
+
 
 export const store = legacy_createStore(rootReducer,applyMiddleware(thunk))
