@@ -2,9 +2,14 @@ import { Box, Flex, Grid, Heading, Icon, Image, Input, Select, Spacer } from "@c
 import { Link } from "react-router-dom"
 import { Category } from "./category"
 import "./navbar.css"
+import { useSelector } from "react-redux"
 
 
 export const Navbar = () => {
+
+    const {isAuth,name}=useSelector((store)=>{
+        return {isAuth:store.loginReducer.isAuth,name:`${store.loginReducer.userSuccessData.first_name} ${store.loginReducer.userSuccessData.last_name} `}
+      })
     return (
         <Box>
             <Flex id="topbar">
@@ -35,7 +40,7 @@ export const Navbar = () => {
                 <Input width={"25%"} borderRadius={"20px"} borderColor={"grey"} placeholder="Search Product"></Input>
                 <Flex>
                     <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb3dec9d6ee83660ebe1de_user.png" />
-                    <Link to="/login">Account</Link>
+                 {  isAuth? <Link to="/profile">{name}</Link>: <Link to="/login">Account</Link>}
                 </Flex>
                 <Flex>
                     <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63eb3dec9b865e78d4ff6b8d_shopping-cart-add.png" />
