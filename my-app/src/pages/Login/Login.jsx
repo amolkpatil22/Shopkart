@@ -1,5 +1,5 @@
-// import {logo} from "../../logo/logo" 
-import { Link as RouterLink } from 'react-router-dom';
+
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Button,
   Checkbox,
@@ -9,19 +9,63 @@ import {
   Heading,
   Input,
   Stack,
-  // Image,
   Link,
-  // FormHelperText,
   Box,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
-
-// ...
+import { getLocaluserData } from '../../utilis/LocalStorage';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+import { loginAction } from './LoginAction';
 
 export const Login = () => {
+  const navigate=useNavigate();
   const { toggleColorMode } = useColorMode(); 
-  // const formBgColor = useColorModeValue('white', 'gray.800');
+  const dispatch=useDispatch();
+  const isAuth=useSelector((store)=>{
+    return store.loginReducer.isAuth
+  })
+ let initialdata = {
+  email:"",
+  password:""
+ }
+
+ const [userLoginData,setLoginData]=useState(initialdata)
+ const [getSignUp,setSignUp]=useState()
+
+
+
+ useEffect(()=>{
+  setSignUp(()=>getLocaluserData(userLoginData?.email))
+ },[userLoginData.email])
+const handleChange=(e)=>{
+ const {value,name}=e.target
+
+ setLoginData((pre)=>{
+  return {...pre,[name]:value}
+ })
+
+
+
+}
+const handleLogin=(e)=>{
+
+  e.preventDefault();
+
+ if(userLoginData?.password===getSignUp?.password ){
+  dispatch(loginAction(getSignUp))
+
+ }else{
+  navigate("/signUp")
+ }
+
+}
+
+if(isAuth){
+  navigate("/")
+ }
+
 
   return (
     
@@ -52,6 +96,8 @@ export const Login = () => {
           _placeholder={{
             color: useColorModeValue('gray.500', 'gray.400'),
           }}
+          name='email'
+          onChange={handleChange}
         />
       </FormControl>
       <FormControl id="password">
@@ -63,6 +109,8 @@ export const Login = () => {
           _placeholder={{
             color: useColorModeValue('gray.500', 'gray.400'),
           }}
+          name='password'
+          onChange={handleChange}
         />
       </FormControl>
 
@@ -72,7 +120,7 @@ export const Login = () => {
           align={'start'}
           justify={'space-between'}>
           <Checkbox colorScheme="teal">Remember me</Checkbox>
-          <Link
+         {!isAuth&& <Link
             color={'teal.600'}
             as={RouterLink}
             to="/signUp"
@@ -80,7 +128,7 @@ export const Login = () => {
               textDecoration: 'underline',
             }}>
             Sign Up
-          </Link>
+          </Link>}
         </Stack>
         <Button
           loadingText="Submitting"
@@ -93,7 +141,9 @@ export const Login = () => {
           _hover={{
            backgroundColor: 'rgb(0,61,41)', 
            opacity: 0.6, 
-           }}>
+           }} 
+           onClick={handleLogin}
+           >
           Sign in
         </Button>
       </Stack>
@@ -116,21 +166,4 @@ export const Login = () => {
   );
 };
 
-
-
-/*
-
-      <Flex
-        flex={1}
-        justify={'center'}
-        align={'center'}
-        bgGradient="linear(to-r, teal.200, teal.500)">
-        <Image
-          alt={'Login Image'}
-          objectFit={'cover'}
-          src={logo}
-          w="100%"
-          h="100%"
-        />
-      </Flex> */
 
