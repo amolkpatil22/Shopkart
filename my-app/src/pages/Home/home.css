@@ -122,7 +122,7 @@
 .discountbox {
     overflow: hidden;
     box-sizing: border-box !important;
-    border-radius: 10px;   
+    border-radius: 10px;
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -135,5 +135,137 @@
 
 .discountimg:hover {
     transform: scale(1.2);
+
+}
+
+
+#middlebanner {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-size: cover;
+}
+
+#middlebox {
+    box-sizing: border-box;
+    padding: 50px;
+    color: white;
+    overflow: hidden;
+    width: 500px;
+    height: 470px;
+    background-color: rgb(0, 61, 41);
+    margin: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 4 grid item */
+
+
+.itemgrid2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+
+}
+
+.itembox2 {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 450px;
+    align-items: left;
+    justify-content: space-between;
+}
+
+.filterbtn {
+    font-weight: 600;
+    width: 100px;
+    border: gray solid 1px;
+    height: max-content;
+    padding: 7px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.filterbtn:focus {
+    background-color: rgb(0, 61, 41);
+    color: white;
+}
+
+
+
+.discountgrid2 {
+    grid-template-columns: repeat(4, 1fr);
+    width: 82%;
+    margin: auto;
+    gap: 20px;
+
+}
+
+.discountbox2 {
+
+    width: 400px;
+    overflow: hidden;
+    box-sizing: border-box !important;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+#paymentgrid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 85%;
+    gap: 10px; 
+   
+    align-items: center;
+    justify-content: center;
+}
+
+#paymentgrid>div {
+   border-radius: 5px;
+    display: flex;
+    border: solid grey 1px;
+    width: 80px;
+    height: 30px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.listitem{
+    overflow: hidden;
+    margin-left: 0;
+    transition: margin-left 0.3s ease-out, color 0.3s ease-out;
+}
+
+.listitem:hover{
+color:  red;
+margin-left: 10px;
+overflow: hidden;
+}
+
+.listbox{
+width:200px;
 
 }
