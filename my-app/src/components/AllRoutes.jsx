@@ -6,6 +6,9 @@ import { SignupCard } from "../pages/Login/SignUp"
 import ElectronicsList from "../pages/Products/Electronics/ElectronicsList"
 import FootwearsList from "../pages/Products/Footwears/FootwearsList"
 import FurnituresList from "../pages/Products/Furnitures/FurnituresList"
+import SingleElectronics from "../pages/SingleProduct/SingleElectronics"
+import SingleFootwears from "../pages/SingleProduct/SingleFootwears"
+import SingleFurnitures from "../pages/SingleProduct/SingleFurnitures"
 
 
 export const AllRoutes = () => {
@@ -19,6 +22,9 @@ export const AllRoutes = () => {
             <Route path="/electronicslist" element={<ElectronicsList/>}/>
             <Route path="/footwearslist" element={<FootwearsList/>}/>
             <Route path="/furnitureslist" element={<FurnituresList/>}/> 
+            <Route path="/electronicslist/:id" element={<SingleElectronics/>}/>
+            <Route path="/footwearslist/:id" element={<SingleFootwears/>}/>
+            <Route path="/furnitureslist/:id" element={<SingleFurnitures/>}/>
 
         </Routes>
     )

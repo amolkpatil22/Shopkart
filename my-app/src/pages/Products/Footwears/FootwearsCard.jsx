@@ -45,7 +45,7 @@ const FootwearsCard = ({id,title, image, price, description, category, quantity,
   return (
     <Card maxW="sm">
       <CardBody>
-        <Link to= {`/footwears/${id}`}>
+        <Link to= {`/footwearslist/${id}`}>
           <Image src={image} borderRadius="lg" alt="Image"/>
         </Link>
         <Flex justifyContent={"space-between"}>
@@ -54,6 +54,9 @@ const FootwearsCard = ({id,title, image, price, description, category, quantity,
           <Heading size="md">{title}</Heading>
           <Text color="orange.500" fontSize="2xl">
             ${price}
+          </Text>
+          <Text color="black" fontSize="2xl">
+            {brand}
           </Text>
         </Stack>
         </Box>
