@@ -15,7 +15,7 @@ import SingleFurnitures from "../pages/SingleProduct/SingleFurnitures"
 
 
 export const AllRoutes = () => {
-    
+
     return (
 
         <Routes>
@@ -23,24 +23,22 @@ export const AllRoutes = () => {
             <Route path="/cart" element={<Cart />} />
 
             <Route path="/login" element={
-            
-                    <Login/>
-          
-            }/>
-           <Route path="/signUp"  element={
-             
-                    <SignupCard/>
-               
-            }/>
-          <Route path="/profile" element={<Profile/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/signUp" element={<SignupCard/>}/>
-            <Route path="/electronicslist" element={<ElectronicsList/>}/>
-            <Route path="/footwearslist" element={<FootwearsList/>}/>
-            <Route path="/furnitureslist" element={<FurnituresList/>}/> 
-            <Route path="/electronicslist/:id" element={<SingleElectronics/>}/>
-            <Route path="/footwearslist/:id" element={<SingleFootwears/>}/>
-            <Route path="/furnitureslist/:id" element={<SingleFurnitures/>}/>
+
+                <Login />
+
+            } />
+            <Route path="/signUp" element={
+
+                <SignupCard />
+
+            } />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signUp" element={<SignupCard />} />
+            <Route path="/product" element={<ElectronicsList />} />
+            <Route path="/product/:id" element={<SingleElectronics />} />
+            {/* <Route path="/footwearslist/:id" element={<SingleFootwears />} />
+            <Route path="/furnitureslist/:id" element={<SingleFurnitures />} /> */}
 
 
         </Routes>

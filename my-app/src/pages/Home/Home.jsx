@@ -1,8 +1,10 @@
 import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Text, border } from "@chakra-ui/react"
 import "./home.css"
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import { datafetch } from "./action"
 
 const dummy = [
     {
@@ -52,9 +54,17 @@ const dummy = [
 
 export const Home = () => {
     let ref = useRef(null)
+    let [data, setdata] = useState([])
+    let dispatch = useDispatch()
+    let { isLoading, isError, product } = useSelector((store) => {
+        return {
+            isLoading: store.HomeReducer.isLoading,
+            isError: store.HomeReducer.isError,
+            product: store.HomeReducer.product,
+        }
+    }, shallowEqual)
 
     const handle = (e) => {
-        console.log(ref)
         let itemgrid = ref.current
         if (e.target.id == "previcon") {
             itemgrid.scrollBy({ left: -500, behavior: "smooth" })
@@ -63,6 +73,29 @@ export const Home = () => {
             itemgrid.scrollBy({ left: 500, behavior: "smooth" })
         }
     }
+
+    useEffect(() => {
+        dispatch(datafetch())
+    }, [])
+
+
+    useEffect(() => {
+        if (product.length !== 0) {
+            let newdata = []
+            let prev = -1
+            let newarr = new Array(9).fill(0)
+            newarr.forEach((e) => {
+                let num = Math.floor(Math.random() * 30)
+                if (num == prev) {
+                    num = num + 1
+                }
+                newdata.push(product[num])
+                prev = num
+            })
+            setdata(newdata)
+        }
+    }, [product])
+    console.log(data)
 
 
     return (
@@ -83,7 +116,7 @@ export const Home = () => {
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e52d6553668075697e_hand%20bag-min.png"} fontSize={"2xl"}>Hand Bag</Heading>
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e460afc22b7ea53520_books-min.png"} fontSize={"2xl"}>Books</Heading>
                     <Link to={"/electronicslist"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e754ac2e32897cb53b_tech-min.png"} fontSize={"2xl"}>Tech</Heading></Link>
-                    <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e64b769118272f244f_sneakers-min.png"} fontSize={"2xl"} >Sneakers</Heading>
+                    <Link to={"/footwearslist"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e64b769118272f244f_sneakers-min.png"} fontSize={"2xl"} >Sneakers</Heading></Link>
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e71eb4ad6d07e7568f_travel-min.png"} fontSize={"2xl"} >Travel</Heading>
                 </Flex>
             </Box>
@@ -93,15 +126,15 @@ export const Home = () => {
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
                 <Grid className="itemgrid" ref={ref}>
                     <ChevronLeftIcon className="icon" id="previcon" onClick={handle} />
-                    {dummy?.map((e) => {
+                    {data?.map((e, ind) => {
                         return (
-                            <Box key={e.id} className="itembox" padding={"20px"}  >
+                            <Box key={ind} className="itembox" padding={"20px"}  >
                                 <Image src={e.image} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
                                     <Heading fontSize={"xl"}>{e.title}</Heading>
                                     <Heading fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
-                                <Text width={"90%"} marginBottom={"10px"}>{e.color}</Text>
+                                <Text textOverflow={"clip"} overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.description}</Text>
 
                                 <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>

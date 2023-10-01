@@ -45,7 +45,7 @@ const ElectronicsCard = ({id,title, image, price, description, category, quantit
   return (
     <Card maxW="sm">
       <CardBody>
-        <Link to= {`/electronicslist/${id}`}>
+        <Link to= {`/product/${id}`}>
           <Image src={image} borderRadius="lg" alt="Image"/>
         </Link>
         <Flex justifyContent={"space-between"}>
