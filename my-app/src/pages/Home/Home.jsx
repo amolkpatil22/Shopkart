@@ -99,7 +99,7 @@ export const Home = () => {
                                     <Heading fontSize={"xl"}>{e.title}</Heading>
                                     <Heading fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
-                                <Text  width={"90%"} marginBottom={"10px"}>{e.color}</Text>
+                                <Text width={"90%"} marginBottom={"10px"}>{e.color}</Text>
 
                                 <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
@@ -110,31 +110,123 @@ export const Home = () => {
             </Box>
 
 
-
-            <Box marginTop={"100px"}>
-                <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
-                <Grid gridTemplateColumns={"repeat(5,1fr)"} overflowX={"auto"} gap={"20px"} >
-
-                    {dummy?.map((e) => {
-                        return (
-                            <Box display={"flex"} flexDirection={"column"} border={"solid red"} width={"400px"} alignItems={"center"} >
-                                <Image src={e.image} />
-                                <h4>{e.title}</h4>
-                                <Text></Text>
-                                <Button>Add to Cart</Button>
-                            </Box>
-                        )
-                    })}
+            <Box marginTop={"100px"}  >
+                <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Choose By Brand</Heading>
+                <Grid id="brandgrid">
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e560afc2c49da53521_brand%20(3)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Staples</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e58b497e41aa46b801_brand%20(8)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Sprouts</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e5eaf8533b0958cefe_brand%20(5)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Grocery outlet</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e454ac2e9d497cb531_brand%20(6)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Mollie stones</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4707380971125e685_brand%20(4)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Sports Basement</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e460afc2193aa53511_brand%20(2)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Container Store</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4c21faa5e03c209c5_brand%20(1)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Target</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
+                    <Flex gap={"15px"} className="branditem">
+                        <Image src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e51eb4ad92a3e75673_brand%20(7)-min.png" />
+                        <Box>
+                            <Heading fontSize={"xl"}>Bevmo</Heading>
+                            <Text>Delivery with in 24 hours</Text>
+                        </Box>
+                    </Flex>
 
                 </Grid>
             </Box>
 
 
+            <Box marginTop={"100px"}  >
+                <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Get Up To 70% Off</Heading>
+                <Grid className="discountgrid">
+                    <Box className="discountbox"  >
+                        <Box bgColor={"rgb(242,228,217)"}  padding={"30px"}>
+                            <Heading fontSize={"2xl"} marginBottom={"10px"}>Save</Heading>
+                            <Flex marginBottom={"10px"} color={"rgb(203,153,23)"} ><Text fontWeight={"bold"} fontSize={"2xl"}>$</Text><Heading fontWeight={"extrabold"}>100</Heading></Flex>
+                            <Text marginBottom={"10px"}>Explore Our Furniture & Home Furnishing Range</Text>
+                        </Box>
+                       <Box overflow={"hidden"}>
+                       <Image className="discountimg" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e6cd367817e964f756_sofa-min.png"></Image>
+                       </Box>
+                    </Box>
+                    <Box className="discountbox"  >
+                        <Box bgColor={"rgb(249,220,220)"}  padding={"30px"}>
+                            <Heading fontSize={"2xl"} marginBottom={"10px"}>Save</Heading>
+                            <Flex marginBottom={"10px"} color={"rgb(150,31,31)"} ><Text fontWeight={"bold"} fontSize={"2xl"}>$</Text><Heading fontWeight={"extrabold"}>29</Heading></Flex>
+                            <Text marginBottom={"10px"}>Explore Our Furniture & Home Furnishing Range</Text>
+                        </Box>
+                       <Box overflow={"hidden"}>
+                       <Image className="discountimg" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e4e006822af104db61_book-min.png"></Image>
+                       </Box>
+                    </Box>
+                    <Box className="discountbox"  >
+                        <Box bgColor={"rgb(242,228,217)"}  padding={"30px"}>
+                            <Heading fontSize={"2xl"} marginBottom={"10px"}>Save</Heading>
+                            <Flex marginBottom={"10px"} color={"rgb(148,98,60)"} ><Text fontWeight={"bold"} fontSize={"2xl"}>$</Text><Heading fontWeight={"extrabold"}>67</Heading></Flex>
+                            <Text marginBottom={"10px"}>Explore Our Furniture & Home Furnishing Range</Text>
+                        </Box>
+                       <Box overflow={"hidden"}>
+                       <Image className="discountimg" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e61a7c20076aec5fe7_shirt-min.png"></Image>
+                       </Box>
+                    </Box>
+                    <Box className="discountbox"  >
+                        <Box bgColor={"rgb(210,247,236)"}  padding={"30px"}>
+                            <Heading fontSize={"2xl"} marginBottom={"10px"}>Save</Heading>
+                            <Flex marginBottom={"10px"} color={"rgb(0,61,41)"} ><Text fontWeight={"bold"} fontSize={"2xl"}>$</Text><Heading fontWeight={"extrabold"}>59</Heading></Flex>
+                            <Text marginBottom={"10px"}>Explore Our Furniture & Home Furnishing Range</Text>
+                        </Box>
+                       <Box overflow={"hidden"}>
+                       <Image className="discountimg" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e53f7127592743f6be_bug%20%26%20book-min.png"></Image>
+                       </Box>
+                    </Box>
+                 
+                </Grid>
+            </Box>
+
+
+
+
         </Box>
     )
 }
-
-
 
 
 

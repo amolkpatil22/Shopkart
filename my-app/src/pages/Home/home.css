@@ -39,8 +39,8 @@
     scrollbar-width: none;
     overflow-x: auto;
     align-items: center;
-  width: 80%;
-  margin: auto;
+    width: 80%;
+    margin: auto;
 
 }
 
@@ -51,10 +51,10 @@
 .itembox {
     padding: 10px;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     width: 400px;
     align-items: left;
- 
+
 }
 
 
@@ -75,5 +75,65 @@
     width: 50px !important;
     height: 50px !important;
     padding: 10px;
+
+}
+
+#brandgrid {
+    width: 84%;
+    gap: 20px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto) !important;
+
+}
+
+.branditem {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(245, 246, 246);
+    border: rgb(245, 246, 246) solid 1px;
+    transition: border 0.3s ease-in-out;
+}
+
+.branditem:hover {
+    border: grey solid 1px;
+}
+
+.branditem>img {
+    transition: transform 0.3s;
+}
+
+.branditem>img:hover {
+    transform: scale(1.1);
+}
+
+
+.discountgrid {
+    grid-template-columns: repeat(4, 1fr);
+    width: 85%;
+    margin: auto;
+    gap: 20px;
+
+}
+
+.discountbox {
+    overflow: hidden;
+    box-sizing: border-box !important;
+    border-radius: 10px;   
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+.discountimg {
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.discountimg:hover {
+    transform: scale(1.2);
 
 }
