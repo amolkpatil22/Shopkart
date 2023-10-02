@@ -12,17 +12,18 @@
     width: 100%;
     justify-content: space-between;
     margin: auto;
-    background-color: rgb(0,61,41);
+    background-color: rgb(0, 61, 41);
     text-align: center;
     align-items: center;
     color: white;
     padding-left: 10%;
     padding-right: 10%;
-   
+
 }
-#topbar select{
+
+#topbar select {
     font-size: small;
-   
+
 }
 
 
@@ -30,4 +31,57 @@
     padding: 5px;
     color: black;
     font-size: small;
+}
+
+.search {    
+    opacity: 1;
+    position: absolute;
+    padding: 20px;
+    background-color: white;
+    border: rgb(0, 61, 41) solid 1px;
+    width: 350px;
+    margin-top: 20px;
+    height: max-content;
+    max-height: 400px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    border-radius: 10px;
+   
+}
+
+
+
+/* Style the scrollbar */
+.search::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the entire scrollbar */
+    height: 100px;
+}
+
+.search::-webkit-scrollbar-track {
+    background: white;
+    /* Color of the tracking area */
+}
+
+.search::-webkit-scrollbar-thumb {
+    background-color: lightcoral;
+    /* Color of the scrollbar handle */
+    border-radius: 20px;
+    /* Rounded corners of the handle */
+}
+
+.search::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0, 61, 41);
+    /* Color on hover */
+}
+
+.link {
+    color: rgb(0, 61, 41);
+    font-weight: normal; 
+    transition: color 0.3s, font-weight 0.3s; 
+}
+
+.link:hover {
+    color: orangered; 
+    font-weight: bold; 
 }
