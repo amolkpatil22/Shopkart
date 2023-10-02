@@ -17,7 +17,6 @@ const ElectronicsList = () => {
   const dispatch = useDispatch();
   const electronics = useSelector((store) => store.productReducer.product);
 
-  
 
   useEffect(() => {
     let params = { category: category }
@@ -30,8 +29,8 @@ const ElectronicsList = () => {
     }
     else if (sortBy) {
       params = { category: category, _sort: sortBy }
-    }    
-   
+    }
+
     setSearchParams(params)
     dispatch(fetchElectronics(params))
 
@@ -54,11 +53,20 @@ const ElectronicsList = () => {
             value={filterCategory}
             width="150px"
           >
-
             <option value="">All</option>
-            <option value="Mobile">Mobile</option>
-            <option value="TV">TV</option>
-            <option value="Headphones">Headphones</option>
+            {category == "electronics" && <option value="Mobile">Mobile</option>}
+            {category == "electronics" && <option value="TV">TV</option>}
+            {category == "electronics" && <option value="Headphones">Headphones</option>}
+
+
+            {category == "furnitures" && <option value="Sofa">Sofa</option>}
+            {category == "furnitures" && <option value="Bed">Bed</option>}
+            {category == "furnitures" && <option value="Cupboard">Cupboard</option>}
+
+            {category == "footwear" && <option value="Sandals">Sandals</option>}
+            {category == "footwear" && <option value="Slippers">Slippers</option>}
+            {category == "footwear" && <option value="Shoes">Shoes</option>}
+
           </Select>
         </FormControl>
 
@@ -72,7 +80,7 @@ const ElectronicsList = () => {
       </Flex>
       <br />
       <Box marginLeft="50px">
-      
+
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={1} >
           {
             electronics?.map((el) => {
