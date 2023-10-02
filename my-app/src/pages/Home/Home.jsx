@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Text, border } from "@chakra-ui/react"
+import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Spinner, Text, border } from "@chakra-ui/react"
 import "./home.css"
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 import { useEffect, useRef, useState } from "react"
@@ -54,7 +54,9 @@ const dummy = [
 
 export const Home = () => {
     let ref = useRef(null)
+    let [localfilter, setlocalfilter] = useState("")
     let [data, setdata] = useState([])
+    let [trendingdata, settrendingdata] = useState([])
     let dispatch = useDispatch()
     let { isLoading, isError, product } = useSelector((store) => {
         return {
@@ -87,11 +89,11 @@ export const Home = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    if(num==29){
-                        num=num-1
+                    if (num == 29) {
+                        num = num - 1
                     }
-                    else{
-                        num=num+1
+                    else {
+                        num = num + 1
                     }
                 }
                 newdata.push(product[num])
@@ -99,9 +101,57 @@ export const Home = () => {
             })
             setdata(newdata)
         }
-    }, [product])
-    console.log(data)
 
+    }, [product])
+
+
+    const filterhandle = (e) => {
+        setlocalfilter(e.target.id)
+    }
+
+
+    useEffect(() => {
+        if (product.length !== 0) {
+            let newdata1 = []
+            let prev1 = -1
+            let newarr1 = new Array(8).fill(0)
+            let category1 = product
+            if (localfilter !== "") {
+                category1 = product.filter((e) => e.category == localfilter);
+                newarr1.forEach((e) => {
+                    let num1 = Math.floor(Math.random() * 10)
+                    if (num1 == prev1) {
+                        if (num1 == 10) {
+                            num1 = num1 - 1
+                        }
+                        else {
+                            num1 = num1 + 1
+                        }
+                    }
+                    newdata1.push(category1[num1])
+                    prev1 = num1
+                })
+
+            }
+            else {
+                newarr1.forEach((e) => {
+                    let num1 = Math.floor(Math.random() * 30)
+                    if (num1 == prev1) {
+                        if (num1 == 29) {
+                            num1 = num1 - 1
+                        }
+                        else {
+                            num1 = num1 + 1
+                        }
+                    }
+                    newdata1.push(category1[num1])
+                    prev1 = num1
+                })
+            }
+            settrendingdata(newdata1)
+        }
+    }, [localfilter, product])
+    console.log(trendingdata)
 
     return (
         <Box >
@@ -117,11 +167,11 @@ export const Home = () => {
             <Box marginTop={"100px"} >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Shop Our Top Categories</Heading>
                 <Flex width={"90%"} margin={"auto"} justifyContent={"center"} gap={"20px"} >
-                    <Link to={"/furnitureslist"}> <Heading className="categoryHeading" bgImage={"url(https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e570738029a725e686_Furniture-min.png)"} fontSize={"2xl"} >Furniture</Heading></Link>
+                    <Link to={"/product?category=furnitures"}> <Heading className="categoryHeading" bgImage={"url(https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e570738029a725e686_Furniture-min.png)"} fontSize={"2xl"} >Furniture</Heading></Link>
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e52d6553668075697e_hand%20bag-min.png"} fontSize={"2xl"}>Hand Bag</Heading>
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e460afc22b7ea53520_books-min.png"} fontSize={"2xl"}>Books</Heading>
-                    <Link to={"/electronicslist"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e754ac2e32897cb53b_tech-min.png"} fontSize={"2xl"}>Tech</Heading></Link>
-                    <Link to={"/footwearslist"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e64b769118272f244f_sneakers-min.png"} fontSize={"2xl"} >Sneakers</Heading></Link>
+                    <Link to={"/product?category=electronics"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e754ac2e32897cb53b_tech-min.png"} fontSize={"2xl"}>Tech</Heading></Link>
+                    <Link to={"/product?category=footwear"}><Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e64b769118272f244f_sneakers-min.png"} fontSize={"2xl"} >Sneakers</Heading></Link>
                     <Heading className="categoryHeading" bgImage={"https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e71eb4ad6d07e7568f_travel-min.png"} fontSize={"2xl"} >Travel</Heading>
                 </Flex>
             </Box>
@@ -131,15 +181,22 @@ export const Home = () => {
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
                 <Grid className="itemgrid" ref={ref}>
                     <ChevronLeftIcon className="icon" id="previcon" onClick={handle} />
-                    {data?.map((e, ind) => {
+                    {data == undefined && <Spinner
+                        thickness='4px'
+                        speed='0.65s'
+                        emptyColor='gray.200'
+                        color='green.500'
+                        size='xl'
+                    />}
+                    {data?.map((e) => {
                         return (
-                            <Box key={ind} className="itembox" padding={"20px"}  >
-                                <Image src={e.image} width={"90%"} />
+                            <Box key={e?.id * Math.random()} className="itembox" padding={"20px"}  >
+                                <Image borderRadius={"20px"} height={"350px"} src={e?.image} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e.title}</Heading>
-                                    <Heading fontSize={"xl"}>${e.price}</Heading>
+                                    <Heading fontSize={"xl"}>{e?.title}</Heading>
+                                    <Heading color={"green"} fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
-                                <Text textOverflow={"clip"} overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.description}</Text>
+                                <p className="description" >{e?.description}</p>
 
                                 <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
@@ -276,25 +333,32 @@ export const Home = () => {
             <Box marginTop={"100px"}  >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Trending Deals for you!</Heading>
                 <Flex justifyContent={"space-between"} width={"60%"} marginLeft={"10%"}>
-                    <Text className="filterbtn">Gadgets</Text>
+                    <Text id="electronics" className={localfilter == "electronics" ? "applyfilter" : "filterbtn"} onClick={filterhandle}>Gadgets</Text>
                     <Text className="filterbtn">Fashion</Text>
                     <Text className="filterbtn">Toys</Text>
                     <Text className="filterbtn">Education</Text>
                     <Text className="filterbtn">Beauty</Text>
                     <Text className="filterbtn">Fitness</Text>
-                    <Text className="filterbtn">Furniture</Text>
-                    <Text className="filterbtn">Sneakers</Text>
+                    <Text id="furnitures" className={localfilter == "furnitures" ? "applyfilter" : "filterbtn"} onClick={filterhandle}>Furniture</Text>
+                    <Text id="footwear" className={localfilter == "footwear" ? "applyfilter" : "filterbtn"} onClick={filterhandle}>Sneakers</Text>
                 </Flex>
-                <Grid className="itemgrid2" >
-                    {dummy?.map((e) => {
+                <Grid className="itemgrid2" marginTop={"50px"}>
+                    {trendingdata == undefined && <Spinner
+                        thickness='4px'
+                        speed='0.65s'
+                        emptyColor='gray.200'
+                        color='green.500'
+                        size='xl'
+                    />}
+                    {trendingdata?.map((e) => {
                         return (
-                            <Box key={e.id} className="itembox2" padding={"20px"}  >
-                                <Image src={e.image} width={"90%"} />
+                            <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
+                                <Image src={e?.image} height={"200px"} borderRadius={"20px"} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e.title}</Heading>
-                                    <Heading fontSize={"xl"}>${e.price}</Heading>
+                                    <Heading fontSize={"xl"}>{e?.title}</Heading>
+                                    <Heading fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
-                                <Text overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.color}</Text>
+                                <Text overflow={"hidden"} height={"45px"} width={"90%"} marginBottom={"10px"}>{e?.description}</Text>
                                 <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
