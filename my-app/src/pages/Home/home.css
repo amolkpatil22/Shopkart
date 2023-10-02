@@ -175,12 +175,12 @@
 .itemgrid2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: 20px;
     align-items: center;
     width: 80%;
     margin: auto;
-
+    overflow: hidden;
 }
 
 .itembox2 {
@@ -205,10 +205,22 @@
     border-radius: 30px;
 }
 
-.filterbtn:focus {
+.applyfilter {
     background-color: rgb(0, 61, 41);
     color: white;
+    font-weight: 600;
+    width: 100px;
+    border: gray solid 1px;
+    height: max-content;
+    padding: 7px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px;
 }
+
+
+
 
 
 
@@ -235,14 +247,14 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: 85%;
-    gap: 10px; 
-   
+    gap: 10px;
+
     align-items: center;
     justify-content: center;
 }
 
 #paymentgrid>div {
-   border-radius: 5px;
+    border-radius: 5px;
     display: flex;
     border: solid grey 1px;
     width: 80px;
@@ -253,19 +265,28 @@
 }
 
 
-.listitem{
+.listitem {
     overflow: hidden;
     margin-left: 0;
     transition: margin-left 0.3s ease-out, color 0.3s ease-out;
 }
 
-.listitem:hover{
-color:  red;
-margin-left: 10px;
-overflow: hidden;
+.listitem:hover {
+    color: red;
+    margin-left: 10px;
+    overflow: hidden;
 }
 
-.listbox{
-width:200px;
+.listbox {
+    width: 200px;
 
+}
+
+
+.description {
+    width: 90%;
+
+    margin-bottom: 20px;
+    height: 90px;
+    overflow: hidden;
 }

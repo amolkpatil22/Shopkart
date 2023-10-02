@@ -9,7 +9,7 @@
       "subcategory": "Mobile",
       "quantity": 1,
       "brand": "Samsung",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 2,
@@ -20,7 +20,7 @@
       "subcategory": "TV",
       "quantity": 1,
       "brand": "LG",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "subcategory": "Headphones",
       "quantity": 1,
       "brand": "Sony",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 4,
@@ -42,7 +42,7 @@
       "subcategory": "Mobile",
       "quantity": 1,
       "brand": "Apple",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 5,
@@ -53,7 +53,7 @@
       "subcategory": "TV",
       "quantity": 1,
       "brand": "Samsung",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 6,
@@ -64,7 +64,7 @@
       "subcategory": "Headphones",
       "quantity": 1,
       "brand": "Bose",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 7,
@@ -75,7 +75,7 @@
       "subcategory": "Mobile",
       "quantity": 1,
       "brand": "Google",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 8,
@@ -86,7 +86,7 @@
       "subcategory": "TV",
       "quantity": 1,
       "brand": "Sony",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 9,
@@ -97,7 +97,7 @@
       "subcategory": "Headphones",
       "quantity": 1,
       "brand": "Bose",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 10,
@@ -108,7 +108,7 @@
       "subcategory": "Mobile",
       "quantity": 1,
       "brand": "OnePlus",
-      "category":"electronics"
+      "category": "electronics"
     },
     {
       "id": 11,
@@ -119,7 +119,7 @@
       "subcategory": "Sofa",
       "quantity": 1,
       "brand": "CozyHome",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 12,
@@ -130,7 +130,7 @@
       "subcategory": "Bed",
       "quantity": 1,
       "brand": "DreamSlumber",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 13,
@@ -141,7 +141,7 @@
       "subcategory": "Cupboard",
       "quantity": 1,
       "brand": "WoodCrafters",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 14,
@@ -152,10 +152,10 @@
       "subcategory": "Sofa",
       "quantity": 1,
       "brand": "ContempoLiving",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
-      "id": 115,
+      "id": 15,
       "title": "Luxury King Size Bed",
       "image": "https://www.at-home.co.in/cdn/shop/products/TimberlandkingLSWALNUT_23d4ee80-815e-4964-a8b2-06aa99e569f6.jpg?v=1659679856",
       "price": 1199.99,
@@ -163,7 +163,7 @@
       "subcategory": "Bed",
       "quantity": 1,
       "brand": "RoyalRest",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 16,
@@ -174,7 +174,7 @@
       "subcategory": "Cupboard",
       "quantity": 1,
       "brand": "RetroHome",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 17,
@@ -185,7 +185,7 @@
       "subcategory": "Sofa",
       "quantity": 1,
       "brand": "LuxuryLiving",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 18,
@@ -196,7 +196,7 @@
       "subcategory": "Bed",
       "quantity": 1,
       "brand": "DreamyNights",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 19,
@@ -207,18 +207,18 @@
       "subcategory": "Cupboard",
       "quantity": 1,
       "brand": "ModernHome",
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
-      "description": "description 10",
-      "name": "name 10",
-      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/884.jpg",
+      "description": "Add a touch of modern sophistication to your space with our Modern Glass Front Cupboard. ",
+      "name": "armchair",
+      "image": "https://img.freepik.com/premium-photo/brown-living-room-with-armchair-table-lamp-abstract-painting-art_258219-569.jpg?w=740",
       "quantity": 25,
       "price": 97,
       "brand": "brand 10",
-      "subcategory": "subcategory 10",
+      "subcategory": "sofa",
       "id": 20,
-      "category":"furnitures"
+      "category": "furnitures"
     },
     {
       "id": 21,
@@ -229,7 +229,7 @@
       "subcategory": "Shoes",
       "quantity": 1,
       "brand": "Active Run",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 22,
@@ -240,7 +240,7 @@
       "subcategory": "Sandals",
       "quantity": 1,
       "brand": "Chic Style",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 23,
@@ -251,7 +251,7 @@
       "subcategory": "Shoes",
       "quantity": 1,
       "brand": "Elegant Step",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 24,
@@ -262,7 +262,7 @@
       "subcategory": "Slippers",
       "quantity": 1,
       "brand": "Cozy Feet",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 25,
@@ -273,7 +273,7 @@
       "subcategory": "Shoes",
       "quantity": 1,
       "brand": "Trailblazer",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 26,
@@ -284,7 +284,7 @@
       "subcategory": "Sandals",
       "quantity": 1,
       "brand": "Beach Life",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 27,
@@ -295,7 +295,7 @@
       "subcategory": "Shoes",
       "quantity": 1,
       "brand": "Classic Wear",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 28,
@@ -306,7 +306,7 @@
       "subcategory": "Slippers",
       "quantity": 1,
       "brand": "Snuggle Up",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 29,
@@ -317,7 +317,7 @@
       "subcategory": "Shoes",
       "quantity": 1,
       "brand": "Urban Trend",
-      "category":"footwear"
+      "category": "footwear"
     },
     {
       "id": 30,
@@ -328,7 +328,7 @@
       "subcategory": "Sandals",
       "quantity": 1,
       "brand": "Boho Vibe",
-      "category":"footwear"
+      "category": "footwear"
     }
   ],
   "userdata": []
