@@ -69,7 +69,7 @@ export const Deal = () => {
         if (product.length !== 0) {
             let newdata = []
             let prev = -1
-            let newarr = new Array(5).fill(0)
+            let newarr = new Array(8).fill(0)
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
@@ -92,7 +92,7 @@ export const Deal = () => {
         if (product.length !== 0) {
             let newdata = []
             let prev = -1
-            let newarr = new Array(5).fill(0)
+            let newarr = new Array(8).fill(0)
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
@@ -113,7 +113,7 @@ export const Deal = () => {
         if (product.length !== 0) {
             let newdata = []
             let prev = -1
-            let newarr = new Array(5).fill(0)
+            let newarr = new Array(8).fill(0)
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
@@ -210,7 +210,7 @@ export const Deal = () => {
                         size='xl'
                     />}
                     {offerData?.map((e) => {
-                        const offer = Math.floor(Math.random() * (90 - 40 + 1)) + 70;
+                        const offer = Math.floor(Math.random() * (90 - 70 + 1)) + 70;
                         return (
                             <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
                                 <Image  className="dealimg" src={e?.image} height={"200px"} borderRadius={"20px"} width={"90%"} />
