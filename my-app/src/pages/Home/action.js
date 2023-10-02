@@ -10,3 +10,5 @@ export const datafetch = () => (dispatch) => {
         .then((res) => { dispatch({ type: GET_SUCCESS, payload: res.data }) })
         .catch((err) => { dispatch({ type: GET_FAILURE }) });
 }
+
+

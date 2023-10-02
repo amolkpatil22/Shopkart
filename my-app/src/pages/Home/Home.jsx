@@ -5,51 +5,9 @@ import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { datafetch } from "./action"
+import { loginReducer } from "../Login/LoginReducer"
+import axios from "axios"
 
-const dummy = [
-    {
-        "id": 1,
-        "title": "HomePod mini",
-        "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5507951bbfbe_homepad-mini-min.png",
-        "price": 239.00,
-        "color": "Table with air purifier, stained veneer/black",
-        "rating": 4
-    },
-    {
-        "id": 2,
-        "title": "Instax Mini 9",
-        "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5537881bbfcf_instax%20mini%209-min.png",
-        "price": 99.00,
-        "color": "Selfie mode and selfie mirror, Macro mode",
-        "rating": 5
-    },
-    {
-        "id": 3,
-        "title": "Base Camp Duffel M",
-        "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e48b497e63cc46b800_base%20camp%20duffel%2002-min.png",
-        "price": 159.00,
-        "color": "Table with air purifier, stained veneer/black",
-        "rating": 3
-    },
-    {
-        "id": 4,
-        "title": "Tote Medium",
-        "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e7e006821d3b04db74_Tote%20Medium-min.png",
-        "price": 239.00,
-        "color": "Canvas, full grain leather",
-        "rating": 5,
-
-
-    },
-    {
-        "id": 5,
-        "title": "Headphone",
-        "image": "https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e54b76914b262f2448_headphone-min.png",
-        "price": 239.00,
-        "color": "Table with air purifier, stained veneer/black",
-        "rating": 4
-    }
-]
 
 
 export const Home = () => {
@@ -58,11 +16,12 @@ export const Home = () => {
     let [data, setdata] = useState([])
     let [trendingdata, settrendingdata] = useState([])
     let dispatch = useDispatch()
-    let { isLoading, isError, product } = useSelector((store) => {
+    let { isLoading, isError, product ,isAuth} = useSelector((store) => {
         return {
             isLoading: store.HomeReducer.isLoading,
             isError: store.HomeReducer.isError,
             product: store.HomeReducer.product,
+            isAuth: store.loginReducer.isAuth
         }
     }, shallowEqual)
 
@@ -77,7 +36,7 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        dispatch(datafetch())
+        dispatch(datafetch())       
     }, [])
 
 
