@@ -14,12 +14,22 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import { fetchElectronics } from "../Products/ProductReducer/action";
+import {postdata} from "../Home/action"
+import { shallowEqual} from "react-redux"
+import { useNavigate } from "react-router-dom";
 
 const SingleElectronics = () => {
   const { id } = useParams();
   let dispatch = useDispatch()
+  let navigate = useNavigate()
   const [data, setData] = useState(null);
   const electronics = useSelector((store) => store.productReducer.product);
+  let {  isAuth, userSuccessData } = useSelector((store) => {
+    return {
+        isAuth: store.loginReducer.isAuth,
+        userSuccessData: store.loginReducer.userSuccessData,
+    }
+}, shallowEqual)
 
   useEffect(() => {
     const product = electronics.find((el) => el.id === +id);
@@ -30,14 +40,37 @@ const SingleElectronics = () => {
     if (data == null) {
       dispatch(fetchElectronics())
     }
-  }, [])
+  }, [data])
 
   
+
+  const datapost = (e) => {
+    if (isAuth == false) {
+        return navigate("/login")
+    }
+    else {
+        let newdata = userSuccessData
+        let flag = false
+        newdata.cart.map((a) => {
+            if (a.id == e.id) {
+                flag = true
+                alert("item already in cart")
+                return
+            }
+        })
+        if (flag == false) {
+            newdata.cart.push(e)
+            dispatch(postdata(isAuth, newdata.cart))
+            alert("item addedd to the cart")
+        }
+    }
+
+}
 
 
   return (
     <Center>
-      <Container maxW="100%" marginTop="8px">
+      <Container maxW="100%" marginTop="50px" marginBottom="none">
 
         <Grid templateColumns="1fr 1fr" gap={4} margin="auto" shadow="md" borderWidth="1px"
           borderRadius="lg"
@@ -53,10 +86,13 @@ const SingleElectronics = () => {
             gap={5}
             margin="auto"
           >
+            
+
+           
             <GridItem colSpan={1} >
               <Image src={data?.image} alt="image" maxW="400px" />
             </GridItem>
-
+            
             <GridItem colSpan={1} width="500px">
 
               <Text fontSize="20px" fontWeight="bold" mt="2" >
@@ -72,6 +108,8 @@ const SingleElectronics = () => {
                 <br />
                 <Text fontSize="18px" textColor="gray.500">{data?.description}</Text>
                 <br />
+                
+
                 <Button
                   size={"lg"}
                   colorScheme="green"
@@ -79,12 +117,15 @@ const SingleElectronics = () => {
                   color={"white"}
                   borderRadius={"30px"}
                   marginBottom={"20px"}
+                  onClick={() => { datapost(data) }}
                 >
                   Add to Cart
                 </Button>
+
               </VStack>
 
             </GridItem>
+ 
           </Box>
         </Grid>
       </Container>

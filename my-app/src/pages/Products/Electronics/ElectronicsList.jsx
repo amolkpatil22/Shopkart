@@ -17,6 +17,8 @@ const ElectronicsList = () => {
   const dispatch = useDispatch();
   const electronics = useSelector((store) => store.productReducer.product);
 
+  
+
   useEffect(() => {
     let params = { category: category }
 
@@ -29,8 +31,10 @@ const ElectronicsList = () => {
     else if (sortBy) {
       params = { category: category, _sort: sortBy }
     }    
+   
     setSearchParams(params)
     dispatch(fetchElectronics(params))
+
   }, [category, sortBy, filterCategory]);
 
 
@@ -39,21 +43,6 @@ const ElectronicsList = () => {
   }, [searchParams])
 
 
-
-  // const filteredProducts =
-  //   filterCategory === "All"
-  //     ? electronics
-  //     : electronics.filter((product) => product.category === filterCategory);
-
-
-  // const sortedProducts = [...filteredProducts].sort((a, b) => {
-  //   if (sortBy === "price") {
-  //     return a.price - b.price;
-  //   } else if (sortBy === "name") {
-  //     return a.title.localeCompare(b.title);
-  //   }
-  //   return 0;
-  // });
 
   return (
     <Box >
@@ -83,7 +72,7 @@ const ElectronicsList = () => {
       </Flex>
       <br />
       <Box marginLeft="50px">
-        {/* <Filter /> */}
+      
         <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={1} >
           {
             electronics?.map((el) => {
