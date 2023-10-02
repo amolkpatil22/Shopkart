@@ -339,20 +339,21 @@
       "password": "123",
       "cart": [
         {
-          "id": 25,
-          "title": "Men's Hiking Boots",
-          "image": "https://contents.mediadecathlon.com/p2393847/4d2cc2c91fbaeec4a0a3a00af395c64a/p2393847.jpg?format=auto&quality=70&f=650x0",
-          "price": 119.99,
-          "description": "Conquer the outdoors with our Men's Hiking Boots. These rugged and durable boots are designed for adventure seekers. With waterproof construction and superior traction, they are ideal for hiking, camping, and exploring the wilderness. Stay comfortable and protected on your outdoor journeys with these boots.",
-          "subcategory": "Shoes",
+          "id": 14,
+          "title": "Contemporary Leather Sofa",
+          "image": "https://www.at-home.co.in/cdn/shop/products/Somerville3str_45.jpg?v=1657281898",
+          "price": 799.99,
+          "description": "Experience contemporary luxury with our Contemporary Leather Sofa. This sleek and stylish sofa is upholstered in premium leather that not only looks sophisticated but also offers unmatched comfort. Its clean lines and tufted details add a modern touch to your living space. Crafted with precision and attention to detail, this sofa is the epitome of sophistication and comfort.",
+          "subcategory": "Sofa",
           "quantity": 1,
-          "brand": "Trailblazer",
-          "category": "footwear"
+          "brand": "ContempoLiving",
+          "category": "furnitures"
         }
       ],
       "id": 5
     },
     {
+<<<<<<< HEAD
       "first_name": "vaishnavi",
       "last_name": "punekar",
       "email": "vaishnavipunekar0@gmail.com",
@@ -414,6 +415,13 @@
           "category": "furnitures"
         }
       ],
+=======
+      "first_name": "asdfg",
+      "last_name": "hjkl",
+      "email": "bruce@wayne.com",
+      "password": "1122",
+      "cart": [],
+>>>>>>> 065440a879de201342988abc8204c7f595ace0ca
       "id": 6
     }
   ]
