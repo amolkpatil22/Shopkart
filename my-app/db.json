@@ -370,84 +370,20 @@
           "quantity": 1,
           "brand": "Bose",
           "category": "electronics"
+        },
+        {
+          "id": 2,
+          "title": "LG 55-Inch 4K OLED TV",
+          "image": "https://5.imimg.com/data5/DI/ZS/CP/SELLER-50489472/fortex-hd-ready-ips-led-tv.jpg",
+          "price": 1499.99,
+          "description": "Elevate your home entertainment with the LG 55-Inch 4K OLED TV. Immerse yourself in stunning 4K visuals with vibrant colors and perfect blacks. This smart TV offers access to your favorite streaming services and comes with AI ThinQ technology for voice control. Enjoy cinematic experiences in the comfort of your living room.",
+          "subcategory": "TV",
+          "quantity": 1,
+          "brand": "LG",
+          "category": "electronics"
         }
       ],
       "id": 5
-<<<<<<< HEAD
-    },
-    {
-<<<<<<< HEAD
-      "first_name": "vaishnavi",
-      "last_name": "punekar",
-      "email": "vaishnavipunekar0@gmail.com",
-      "password": "vaishn",
-      "cart": [
-        {
-          "id": 25,
-          "title": "Men's Hiking Boots",
-          "image": "https://contents.mediadecathlon.com/p2393847/4d2cc2c91fbaeec4a0a3a00af395c64a/p2393847.jpg?format=auto&quality=70&f=650x0",
-          "price": 119.99,
-          "description": "Conquer the outdoors with our Men's Hiking Boots. These rugged and durable boots are designed for adventure seekers. With waterproof construction and superior traction, they are ideal for hiking, camping, and exploring the wilderness. Stay comfortable and protected on your outdoor journeys with these boots.",
-          "subcategory": "Shoes",
-          "quantity": 1,
-          "brand": "Trailblazer",
-          "category": "footwear"
-        },
-        {
-          "id": 12,
-          "title": "Elegant Dream Bed",
-          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqvXsRVAiHAhgTj-mxRTzz9IxIwIW8W905dJKX6Wjp&s",
-          "price": 899.99,
-          "description": "Transform your bedroom into a sanctuary of elegance and comfort with our Elegant Dream Bed. Crafted with precision, this bed features a solid wood frame and a timeless design. The upholstered headboard adds a touch of luxury, while the sturdy construction ensures years of restful sleep. Create a dreamy atmosphere in your bedroom with this bed that combines style and durability. Sleep like royalty with the Elegant Dream Bed.",
-          "subcategory": "Bed",
-          "quantity": 1,
-          "brand": "DreamSlumber",
-          "category": "furnitures"
-        },
-        {
-          "id": 11,
-          "title": "Premium Comfort Sofa",
-          "image": "https://shop.gkwretail.com/cdn/shop/products/Designer-Sofa-Set-in-Fabric-L-Shape_2.png?v=1651899140",
-          "price": 699.99,
-          "description": "Indulge in the epitome of relaxation with our Premium Comfort Sofa. This exceptionally plush and spacious sofa is designed to cradle you in absolute comfort. Its luxurious cushioning and ergonomic design make it the perfect addition to your living room. The rich upholstery not only exudes elegance but is also easy to clean, ensuring long-lasting beauty. Upgrade your lounging experience with this sofa that combines style, quality, and comfort.",
-          "subcategory": "Sofa",
-          "quantity": 1,
-          "brand": "CozyHome",
-          "category": "furnitures"
-        },
-        {
-          "id": 3,
-          "title": "Sony WH-1000XM4 Headphones",
-          "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-          "price": 349.99,
-          "description": "Immerse yourself in music like never before with the Sony WH-1000XM4 headphones. These premium over-ear headphones offer industry-leading noise cancellation, stunning audio quality, and all-day comfort. With touch controls and long battery life, you can enjoy your favorite tunes in peace and style.",
-          "subcategory": "Headphones",
-          "quantity": 1,
-          "brand": "Sony",
-          "category": "electronics"
-        },
-        {
-          "id": 13,
-          "title": "Rustic Charm Cupboard",
-          "image": "https://m.media-amazon.com/images/I/61-JpowHPtL.jpg",
-          "price": 549.99,
-          "description": "Add rustic charm and ample storage to your home with our Rustic Charm Cupboard. Crafted from reclaimed wood, this cupboard showcases the natural beauty of the material with a distressed finish. The spacious interior offers versatile storage options, making it perfect for your dining room, kitchen, or living space. Enhance your decor with this timeless piece that combines function and character.",
-          "subcategory": "Cupboard",
-          "quantity": 1,
-          "brand": "WoodCrafters",
-          "category": "furnitures"
-        }
-      ],
-=======
-      "first_name": "asdfg",
-      "last_name": "hjkl",
-      "email": "bruce@wayne.com",
-      "password": "1122",
-      "cart": [],
->>>>>>> 065440a879de201342988abc8204c7f595ace0ca
-      "id": 6
-=======
->>>>>>> dcbd65bde29c2e1ed9df9cc1f29d3d83d461f936
     }
   ]
 }
