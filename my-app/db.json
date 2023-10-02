@@ -348,17 +348,31 @@
           "quantity": 1,
           "brand": "ContempoLiving",
           "category": "furnitures"
+        },
+        {
+          "id": 1,
+          "title": "Samsung Galaxy S21",
+          "image": "https://cdn1.smartprix.com/rx-ii3Pn8ry8-w1200-h1200/i3Pn8ry8.jpg",
+          "price": 415,
+          "description": "Experience the future with the Samsung Galaxy S21. This flagship smartphone features a stunning 6.2-inch Dynamic AMOLED display, a powerful Snapdragon 888 processor, and a versatile triple-camera system. With 5G connectivity and a sleek design, the Galaxy S21 is your gateway to a world of possibilities.",
+          "subcategory": "Mobile",
+          "quantity": 1,
+          "brand": "Samsung",
+          "category": "electronics"
+        },
+        {
+          "id": 6,
+          "title": "Bose QuietComfort 45 Headphones",
+          "image": "https://ptron.in/cdn/shop/products/B07XL8HFNC.MAIN.jpg?v=1667656208",
+          "price": 179,
+          "description": "Escape into pure serenity with the Bose QuietComfort 45 headphones. These over-ear headphones offer world-class noise cancellation, rich and balanced sound, and comfortable design for all-day listening. Whether you're traveling or at home, immerse yourself in your music, podcasts, and calls.",
+          "subcategory": "Headphones",
+          "quantity": 1,
+          "brand": "Bose",
+          "category": "electronics"
         }
       ],
       "id": 5
-    },
-    {
-      "first_name": "asdfg",
-      "last_name": "hjkl",
-      "email": "bruce@wayne.com",
-      "password": "1122",
-      "cart": [],
-      "id": 6
     }
   ]
 }
