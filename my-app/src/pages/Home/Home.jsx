@@ -2,9 +2,9 @@ import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListIte
 import "./home.css"
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
-import { datafetch } from "./action"
+import { datafetch, postdata } from "./action"
 import { loginReducer } from "../Login/LoginReducer"
 import axios from "axios"
 
@@ -12,16 +12,18 @@ import axios from "axios"
 
 export const Home = () => {
     let ref = useRef(null)
+    let navigate = useNavigate()
     let [localfilter, setlocalfilter] = useState("")
     let [data, setdata] = useState([])
     let [trendingdata, settrendingdata] = useState([])
     let dispatch = useDispatch()
-    let { isLoading, isError, product ,isAuth} = useSelector((store) => {
+    let { isLoading, isError, product, isAuth, userSuccessData } = useSelector((store) => {
         return {
             isLoading: store.HomeReducer.isLoading,
             isError: store.HomeReducer.isError,
             product: store.HomeReducer.product,
-            isAuth: store.loginReducer.isAuth
+            isAuth: store.loginReducer.isAuth,
+            userSuccessData: store.loginReducer.userSuccessData,
         }
     }, shallowEqual)
 
@@ -36,7 +38,7 @@ export const Home = () => {
     }
 
     useEffect(() => {
-        dispatch(datafetch())       
+        dispatch(datafetch())
     }, [])
 
 
@@ -68,6 +70,29 @@ export const Home = () => {
         setlocalfilter(e.target.id)
     }
 
+
+    const datapost = (e) => {
+        if (isAuth == false) {
+            return navigate("/login")
+        }
+        else {
+            let newdata = userSuccessData
+            let flag = false
+            newdata.cart.map((a) => {
+                if (a.id == e.id) {
+                    flag = true
+                    alert("item already in cart")
+                    return
+                }
+            })
+            if (flag == false) {
+                newdata.cart.push(e)
+                dispatch(postdata(isAuth, newdata.cart))
+                alert("item addedd to the cart")
+            }
+        }
+
+    }
 
     useEffect(() => {
         if (product.length !== 0) {
@@ -110,7 +135,7 @@ export const Home = () => {
             settrendingdata(newdata1)
         }
     }, [localfilter, product])
-   
+
 
     return (
         <Box >
@@ -157,7 +182,7 @@ export const Home = () => {
                                 </Flex >
                                 <p className="description" >{e?.description}</p>
 
-                                <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
+                                <Button onClick={() => { datapost(e) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}
@@ -318,7 +343,7 @@ export const Home = () => {
                                     <Heading fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
                                 <Text overflow={"hidden"} height={"45px"} width={"90%"} marginBottom={"10px"}>{e?.description}</Text>
-                                <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
+                                <Button onClick={() => { datapost(e) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}

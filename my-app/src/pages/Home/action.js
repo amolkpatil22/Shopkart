@@ -12,3 +12,6 @@ export const datafetch = () => (dispatch) => {
 }
 
 
+export const postdata = (id, data) => (dispatch) => {
+    axios.patch(`http://localhost:8080/userdata/${id}`, {cart:data})    
+}
