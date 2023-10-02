@@ -1,4 +1,4 @@
-import { PRODUCT_FAILURE, PRODUCT_LOADING, FETCH_ELECTRONICS} from "./actionTypes"
+import { PRODUCT_FAILURE, PRODUCT_LOADING, FETCH_ELECTRONICS } from "./actionTypes"
 
 
 const initialState = {
@@ -22,20 +22,7 @@ export const reducer = (state = initialState, { type, payload }) => {
                 isError: false,
                 product: payload,
             }
-        // case FETCH_FOOTWEARS:
-        //     return {
-        //         ...state,
-        //         isLoading: false,
-        //         isError: false,
-        //         footwears: payload,
-        //     }
-        // case FETCH_FURNITURES:
-        //     return {
-        //         ...state,
-        //         isLoading: false,
-        //         isError: false,
-        //         furnitures: payload,
-        //     }
+
         case PRODUCT_FAILURE:
             return {
                 ...state,

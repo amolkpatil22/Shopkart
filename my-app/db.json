@@ -331,5 +331,14 @@
       "category": "footwear"
     }
   ],
-  "userdata": []
+  "userdata": [
+    {
+      "first_name": "Amol",
+      "last_name": "Patil",
+      "email": "amolkpatil22@gmail.com",
+      "password": "123",
+      "cart": [],
+      "id": 5
+    }
+  ]
 }

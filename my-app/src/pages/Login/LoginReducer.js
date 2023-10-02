@@ -4,7 +4,7 @@ import { LOGIN_SUCCESS } from "./LoginActionType";
 const initialState={
     isAuth:false,
     isLoading:false,
-    isError:false,
+    isError:false,    
     userSuccessData:  {}
 }
 export const  loginReducer= (state=initialState,{type,payload})=>{

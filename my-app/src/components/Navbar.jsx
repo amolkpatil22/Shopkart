@@ -1,20 +1,8 @@
-import { Box, Button, Flex, Grid, Heading, Icon, Image, Input, Select, Spacer, Text, useDisclosure } from "@chakra-ui/react"
+import { Box, Flex, Image, Input, Select, Text } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { Category } from "./category"
 import "./navbar.css"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
-import { Fade, ScaleFade, Slide, SlideFade, Collapse } from '@chakra-ui/react'
-import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverHeader,
-    PopoverBody,
-    PopoverFooter,
-    PopoverArrow,
-    PopoverCloseButton,
-    PopoverAnchor,
-} from '@chakra-ui/react'
 import { useEffect, useState } from "react"
 import { CloseIcon } from "@chakra-ui/icons"
 import { datafetch } from "../pages/Home/action"
@@ -31,7 +19,7 @@ export const Navbar = () => {
         }
     }, shallowEqual)
 
-
+    
     useEffect(() => {
         const searchTerm = (searchvalue || '').toLowerCase();
         if (searchTerm) {
