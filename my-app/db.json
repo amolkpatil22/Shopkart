@@ -337,7 +337,74 @@
       "last_name": "Patil",
       "email": "amolkpatil22@gmail.com",
       "password": "123",
-      "cart": [],
+      "cart": [
+        {
+          "id": 30,
+          "title": "Women's Boho Sandals",
+          "image": "https://kxadmin.metroshoes.com/product/57-5023-21-25/1200/57-5023M21.jpg",
+          "price": 49.99,
+          "description": "Express your free-spirited style with our Women's Boho Sandals. These sandals feature unique bohemian-inspired designs that complement your adventurous personality. With comfortable straps and a cushioned footbed, they are perfect for exploring new places or adding flair to your daily look.",
+          "subcategory": "Sandals",
+          "quantity": 1,
+          "brand": "Boho Vibe",
+          "category": "footwear"
+        },
+        {
+          "id": 21,
+          "title": "Men's Running Shoes",
+          "image": "https://media.istockphoto.com/id/1303978937/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?s=612x612&w=0&k=20&c=L725fuzFTnm6qEaqE7Urc5q6IR80EgYQEjBn_qtBIQg=",
+          "price": 79.99,
+          "description": "Experience superior comfort and support with our Men's Running Shoes. These high-performance running shoes are designed for athletes and fitness enthusiasts. Featuring cushioned soles and breathable materials, they provide an optimal running experience. Whether you're hitting the track or the treadmill, these shoes will keep you going mile after mile.",
+          "subcategory": "Shoes",
+          "quantity": 1,
+          "brand": "Active Run",
+          "category": "footwear"
+        },
+        {
+          "id": 14,
+          "title": "Contemporary Leather Sofa",
+          "image": "https://www.at-home.co.in/cdn/shop/products/Somerville3str_45.jpg?v=1657281898",
+          "price": 799.99,
+          "description": "Experience contemporary luxury with our Contemporary Leather Sofa. This sleek and stylish sofa is upholstered in premium leather that not only looks sophisticated but also offers unmatched comfort. Its clean lines and tufted details add a modern touch to your living space. Crafted with precision and attention to detail, this sofa is the epitome of sophistication and comfort.",
+          "subcategory": "Sofa",
+          "quantity": 1,
+          "brand": "ContempoLiving",
+          "category": "furnitures"
+        },
+        {
+          "id": 15,
+          "title": "Luxury King Size Bed",
+          "image": "https://www.at-home.co.in/cdn/shop/products/TimberlandkingLSWALNUT_23d4ee80-815e-4964-a8b2-06aa99e569f6.jpg?v=1659679856",
+          "price": 1199.99,
+          "description": "Indulge in ultimate luxury and comfort with our Luxury King Size Bed. This opulent bed is designed for those who appreciate the finer things in life. It features a grand upholstered headboard, intricate detailing, and a sturdy frame that ensures stability and durability. Elevate your bedroom decor and sleep like royalty with this exquisite king-size bed.",
+          "subcategory": "Bed",
+          "quantity": 1,
+          "brand": "RoyalRest",
+          "category": "furnitures"
+        },
+        {
+          "id": 19,
+          "title": "Modern Glass Front Cupboard",
+          "image": "https://ii1.pepperfry.com/media/catalog/product/u/j/494x544/ujisato-6-door-wardrobe-in-regato-walnut-finish-ujisato-6-door-wardrobe-in-regato-walnut-finish-r0hipu.jpg",
+          "price": 599.99,
+          "description": "Add a touch of modern sophistication to your space with our Modern Glass Front Cupboard. Its sleek design and glass front doors create an elegant display area for your favorite items. The interior shelves offer convenient storage for your belongings. Elevate your home decor with this stylish and functional cupboard.",
+          "subcategory": "Cupboard",
+          "quantity": 1,
+          "brand": "ModernHome",
+          "category": "furnitures"
+        },
+        {
+          "id": 9,
+          "title": "Bose SoundSport Wireless Earbuds",
+          "image": "https://m.media-amazon.com/images/I/61YTjEdKlzL.jpg",
+          "price": 129.99,
+          "description": "Fuel your workouts with the Bose SoundSport Wireless Earbuds. These earbuds offer exceptional sound quality, secure fit, and sweat resistance, making them ideal for active lifestyles. With Bluetooth connectivity and a lightweight design, they're your perfect workout companion.",
+          "subcategory": "Headphones",
+          "quantity": 1,
+          "brand": "Bose",
+          "category": "electronics"
+        }
+      ],
       "id": 5
     }
   ]
