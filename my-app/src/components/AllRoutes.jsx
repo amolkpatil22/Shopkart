@@ -7,6 +7,7 @@ import { PrivateRoute } from "./PrivateRoute"
 import { Profile } from "../pages/Profile/Profile"
 import ElectronicsList from "../pages/Products/Electronics/ElectronicsList"
 import SingleElectronics from "../pages/SingleProduct/SingleElectronics"
+import { Deal } from "../pages/Deal/Deal"
 
 
 
@@ -17,6 +18,7 @@ export const AllRoutes = () => {
         <Routes>
             <Route path="/" element={<Home />} />           
             <Route path="/login" element={<Login />} />
+            <Route path="/deals" element={<Deal />} />
             <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />

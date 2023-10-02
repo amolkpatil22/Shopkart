@@ -1,0 +1,109 @@
+
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./SHOP_CART\ \(1\).gif");
+    background-size: cover !important;
+    background-repeat: 'no-repeat';
+    height: 650px !important;
+    justify-content: center;
+  
+  align-items: center;
+  box-sizing: border-box;
+  background-position: top;
+  overflow-x: hidden;
+}
+.offerImg{
+    width: 99%;
+    height: 350px;
+}
+.itemgrid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    overflow-x: auto;
+    gap: 20px;
+    scrollbar-width: none;
+    overflow-x: auto;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+
+}
+
+.itemgrid::-webkit-scrollbar {
+    scroll-behavior: smooth;
+}
+.itembox {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: left;
+
+}
+
+
+#previcon {
+    left: 8%;
+}
+
+#nexticon {
+    right: 8%;
+}
+
+
+.icon {
+    position: absolute;
+    background-color: black;
+    color: white !important;
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 10px;
+
+}
+
+.discountgrid {
+    grid-template-columns: repeat(4, 1fr);
+    width: 85%;
+    margin: auto;
+    gap: 20px;
+
+}
+
+.discountbox {
+    overflow: hidden;
+    box-sizing: border-box !important;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+.discountimg {
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.discountimg:hover {
+    transform: scale(1.2);
+
+}
+
+.listitem{
+    overflow: hidden;
+    margin-left: 0;
+    transition: margin-left 0.3s ease-out, color 0.3s ease-out;
+}
+
+.listitem:hover{
+color:  red;
+margin-left: 10px;
+overflow: hidden;
+}
+
+.listbox{
+width:200px;
+
+}
