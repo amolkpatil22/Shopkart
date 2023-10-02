@@ -6,6 +6,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { CloseIcon } from "@chakra-ui/icons"
 import { datafetch } from "../pages/Home/action"
+import axios from "axios"
 
 export const Navbar = () => {
     let [searchdata, setsearchdata] = useState([])
@@ -19,7 +20,6 @@ export const Navbar = () => {
         }
     }, shallowEqual)
 
-    
     useEffect(() => {
         const searchTerm = (searchvalue || '').toLowerCase();
         if (searchTerm) {
@@ -29,6 +29,14 @@ export const Navbar = () => {
             setsearchdata(filteredProducts)
         }
     }, [searchvalue])
+
+
+    useEffect(() => {
+        if (isAuth) {
+            axios.get(`http://localhost:8080/userdata/${isAuth}`)
+                .then((res) => { dispatch({ type: "update", payload: res.data }) })
+        }
+    }, [isAuth])
 
     useEffect(() => {
         if (product.length == 0) {
