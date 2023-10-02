@@ -31,7 +31,8 @@ const SingleElectronics = () => {
       dispatch(fetchElectronics())
     }
   }, [])
-  console.log(data)
+
+  
 
 
   return (

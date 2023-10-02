@@ -151,7 +151,7 @@ export const Home = () => {
             settrendingdata(newdata1)
         }
     }, [localfilter, product])
-    console.log(trendingdata)
+   
 
     return (
         <Box >
