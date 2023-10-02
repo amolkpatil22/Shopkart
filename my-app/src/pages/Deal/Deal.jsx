@@ -1,9 +1,9 @@
-import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Text, border } from "@chakra-ui/react"
+import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Spinner, Text, border } from "@chakra-ui/react"
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
-import { datafetch } from "../Home/action"
+import { datafetch, postdata } from "../Home/action"
 
 
 import React from 'react'
@@ -12,16 +12,19 @@ import "./deal.css"
 
 export const Deal = () => {
     let ref = useRef(null)
+    let navigate = useNavigate()
     let [data, setdata] = useState([])
-    let [offerData,setOfferData]=useState([])
-    let [minOfferData,setMinOfferData]=useState([])
-    let [fortyOfferData,setFortyOfferData]=useState([])
+    let [offerData, setOfferData] = useState([])
+    let [minOfferData, setMinOfferData] = useState([])
+    let [fortyOfferData, setFortyOfferData] = useState([])
     let dispatch = useDispatch()
-    let { isLoading, isError, product } = useSelector((store) => {
+    let { isLoading, isError, product, isAuth, userSuccessData } = useSelector((store) => {
         return {
             isLoading: store.HomeReducer.isLoading,
             isError: store.HomeReducer.isError,
             product: store.HomeReducer.product,
+            isAuth: store.loginReducer.isAuth,
+            userSuccessData: store.loginReducer.userSuccessData,
         }
     }, shallowEqual)
 
@@ -48,11 +51,11 @@ export const Deal = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    if(num==29){
-                        num=num-1
+                    if (num == 29) {
+                        num = num - 1
                     }
-                    else{
-                        num=num+1
+                    else {
+                        num = num + 1
                     }
                 }
                 newdata.push(product[num])
@@ -70,11 +73,11 @@ export const Deal = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    if(num==29){
-                        num=num-1
+                    if (num == 29) {
+                        num = num - 1
                     }
-                    else{
-                        num=num+1
+                    else {
+                        num = num + 1
                     }
                 }
                 newdata.push(product[num])
@@ -93,11 +96,11 @@ export const Deal = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    if(num==29){
-                        num=num-1
+                    if (num == 29) {
+                        num = num - 1
                     }
-                    else{
-                        num=num+1
+                    else {
+                        num = num + 1
                     }
                 }
                 newdata.push(product[num])
@@ -114,11 +117,11 @@ export const Deal = () => {
             newarr.forEach((e) => {
                 let num = Math.floor(Math.random() * 30)
                 if (num == prev) {
-                    if(num==29){
-                        num=num-1
+                    if (num == 29) {
+                        num = num - 1
                     }
-                    else{
-                        num=num+1
+                    else {
+                        num = num + 1
                     }
                 }
                 newdata.push(product[num])
@@ -127,16 +130,40 @@ export const Deal = () => {
             setFortyOfferData(newdata)
         }
     }, [product])
-    console.log(data)
-  return (
-    <div>
-        
-      <Box className="banner"></Box>
-        
-        
-        
 
-      <Box marginTop={"100px"}  >
+
+    const datapost = (e, price) => {
+        if (isAuth == false) {
+            return navigate("/login")
+        }
+        else {
+            let newdata = userSuccessData
+            let flag = false
+            newdata.cart.map((a) => {
+                if (a.id == e.id) {
+                    flag = true
+                    alert("item already in cart")
+                    return
+                }
+            })
+            if (flag == false) {
+                let updated = { ...e, price: price }
+                newdata.cart.push(updated)
+                dispatch(postdata(isAuth, newdata.cart))
+                alert("item addedd to the cart")
+            }
+        }
+
+    }
+
+
+
+    return (
+        <div>
+
+            <Box className="banner"></Box>
+
+            <Box marginTop={"100px"}  >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
                 <Grid className="itemgrid" ref={ref}>
                     <ChevronLeftIcon className="icon" id="previcon" onClick={handle} />
@@ -150,30 +177,30 @@ export const Deal = () => {
                     {data?.map((e) => {
                         const offer = Math.floor(Math.random() * (90 - 70 + 1)) + 40;
                         return (
-                            <Box key={e?.id * Math.random()} className="itembox" padding={"20px"}  >
-                                <Image padding={'10px'}borderRadius={"20px"} height={"350px"} src={e?.image} width={"90%"} />
+                            <Box  key={e?.id * Math.random()} className="itembox" padding={"20px"}  >
+                                <Image padding={'10px'} borderRadius={"20px"} height={"350px"} src={e?.image} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius= '10%'>Up to {offer}% Off</Heading>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius= '10%'>Hot Deal</Heading>
+                                    <Heading className="offer" borderRadius={"10px"} fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} >Up to {offer}% Off</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius='10%'>Hot Deal</Heading>
                                 </Flex >
-                                <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e?.title}</Heading>
+                                <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
+                                    <Heading  fontSize={"xl"}>{e?.title}</Heading>
                                     <Heading color={"green"} fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
                                 <p className="description" >{e?.description}</p>
-                                <Heading fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price-(e.price*offer/100))}</Heading>
-                                <br/>
-                                <Button onClick={() => { datapost(e) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"} padding={'10px'}>Add to Cart</Button>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <br />
+                                <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"} padding={'10px'}>Add to Cart</Button>
                             </Box>
                         )
                     })}
                     <ChevronRightIcon className="icon" id="nexticon" onClick={handle} />
                 </Grid>
             </Box>
-            
+
 
             <Box marginTop={"100px"}  >
-                <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Lowest Price Sinc Launch!</Heading>
+                <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Lowest Price Since Launch!</Heading>
                 <Grid className="itemgrid2" marginTop={"50px"}>
                     {offerData == undefined && <Spinner
                         thickness='4px'
@@ -186,26 +213,26 @@ export const Deal = () => {
                         const offer = Math.floor(Math.random() * (90 - 40 + 1)) + 70;
                         return (
                             <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
-                                <Image src={e?.image} height={"200px"} borderRadius={"20px"} width={"90%"} />
+                                <Image  className="dealimg" src={e?.image} height={"200px"} borderRadius={"20px"} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius= '10%'>Up to {offer}% Off</Heading>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius= '10%'>Hot Deal</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius='10%'>Up to {offer}% Off</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius='10%'>Hot Deal</Heading>
                                 </Flex >
-                                <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e?.title}</Heading>
+                                <Flex gap={"10px"} width={"90%"} marginBottom={"10px"}>
+                                    <Heading overflow={"hidden"} maxHeight={"20px"}  fontSize={"lg"}>{e?.title}</Heading>
                                     <Heading fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
                                 <Text overflow={"hidden"} height={"45px"} width={"90%"} marginBottom={"10px"}>Exclusive discount, don't miss out!</Text>
-                                <Heading fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price-(e.price*offer/100))}</Heading>
-                                <br/>
-                                <Button onClick={() => { datapost(e) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <br />
+                                <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}
                 </Grid>
             </Box>
 
-            
+
 
             <Box marginTop={"100px"}  >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"} color={'rgb(174, 8, 8)'}>Get Up To 60% Off</Heading>
@@ -213,49 +240,49 @@ export const Deal = () => {
                     {minOfferData?.map((e) => {
                         const offer = Math.floor(Math.random() * (60 - 40 + 1)) + 40;
                         return (
-                            <Box key={e.id} className="itembox2" padding={"20px"}  >
-                                <Image padding={'10px'} src={e.image} width={"90%"} />
+                            <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
+                                <Image className="dealimg" padding={'10px'} src={e.image} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Up to {offer}% Off</Heading>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Best Deal</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Up to {offer}% Off</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Best Deal</Heading>
                                 </Flex >
-                                <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e.title}</Heading>
+                                <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
+                                    <Heading overflow={"hidden"} maxHeight={"20px"} fontSize={"xl"}>{e.title}</Heading>
                                     <Heading fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
-                                <Text textOverflow={"clip"}  width={"90%"} marginBottom={"10px"}>Exclusive discount, don't miss out!</Text>
-                                <Heading fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price-(e.price*offer/100))}</Heading>
+                                <Text textOverflow={"clip"} width={"90%"} marginBottom={"10px"}>Exclusive discount, don't miss out!</Text>
+                                <Heading  borderRadius={"10px"} fontSize={"xl"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <Text overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.color}</Text>
-                                <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
+                                <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}
                 </Grid>
             </Box>
-            
 
-            
+
+
 
             <Box marginTop={"100px"}  >
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"} color={'rgb(245, 74, 74)'} >Get Up To 40% Off</Heading>
                 <Grid className="itemgrid2" >
                     {fortyOfferData?.map((e) => {
-                        const offer=Math.floor(Math.random() * 40)
+                        const offer = Math.floor(Math.random() * 40)
                         return (
-                            <Box key={e.id} className="itembox2" padding={"20px"}  >
-                                <Image padding={'10px'} src={e.image} width={"90%"} />
+                            <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
+                                <Image className="dealimg" padding={'10px'} src={e.image} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Up to {offer}% Off</Heading>
-                                    <Heading fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Inclusive Deal</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Up to {offer}% Off</Heading>
+                                    <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Inclusive Deal</Heading>
                                 </Flex >
-                                <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e.title}</Heading>
+                                <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
+                                    <Heading overflow={"hidden"} maxHeight={"20px"} fontSize={"xl"}>{e.title}</Heading>
                                     <Heading fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
-                                <Text textOverflow={"clip"}  width={"90%"} marginBottom={"10px"}>Limited-time deal: Grab it now!</Text>
-                                <Heading fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price-(e.price*offer/100))}</Heading>
+                                <Text textOverflow={"clip"} width={"90%"} marginBottom={"10px"}>Limited-time deal: Grab it now!</Text>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <Text overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.color}</Text>
-                                <Button size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
+                                <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
                         )
                     })}
@@ -263,7 +290,7 @@ export const Deal = () => {
             </Box>
 
 
-            
-    </div>
-  )
+
+        </div>
+    )
 }

@@ -1,5 +1,13 @@
+.offer{
+    border-radius: 10px !important;
+    margin-top: 10px;
+}
 
-
+.dealimg{
+    margin: auto;
+    width: 90% !important;
+    height: 200px !important;
+}
 .banner {
     display: flex;
     flex-direction: column;
@@ -19,8 +27,9 @@
     height: 350px;
 }
 .itemgrid {
+
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(9, auto);
     overflow-x: auto;
     gap: 20px;
     scrollbar-width: none;
@@ -74,7 +83,7 @@
 
 .discountbox {
     overflow: hidden;
-    box-sizing: border-box !important;
+  
     border-radius: 10px;
     transition: opacity 0.5s ease-in-out;
 }
@@ -106,4 +115,29 @@ overflow: hidden;
 .listbox{
 width:200px;
 
+}
+
+
+.itemgrid2 {
+   
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.itembox2 {
+    border: solid 1px gray;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex !important;
+    flex-direction: column;
+    width: auto;
+   height: max-content !important;
+    align-items: left;
+    justify-content: space-between !important;
 }
