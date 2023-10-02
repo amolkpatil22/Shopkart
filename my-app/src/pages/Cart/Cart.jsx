@@ -1,30 +1,30 @@
 
-import React, { useState,useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { Box,Heading,Text,Image,VStack,HStack,Button,Spacer,StackDivider,Container,} from '@chakra-ui/react';
+import React, { useState, useEffect, useMemo, memo } from 'react';
+import { Box, Heading, Text, Image, VStack, HStack, Button, Spacer, StackDivider, Container, } from '@chakra-ui/react';
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import axios from 'axios';
 
-export const Cart=()=>{
+export const Cart = () => {
   //const stripePromise = loadStripe('pk_test_51NwhZLSG2DdjK2iecru6SmXEg4hif3HaKsAwcUHwZELTMpLM3cWcMQUzckaFuoVre8oi65WO7pEIco6EsoPm9Gum008dHzgXiF'); // Replace with your Stripe Publishable Key
 
   let { isAuth, userSuccessData } = useSelector((store) => {
     return {
-        isAuth: store.loginReducer.isAuth,
-        userSuccessData: store.loginReducer.userSuccessData,
+      isAuth: store.loginReducer.isAuth,
+      userSuccessData: store.loginReducer.userSuccessData,
     }
-}, shallowEqual)
+  }, shallowEqual)
 
   const [cartData, setCartData] = useState(userSuccessData?.cart);
 
- 
+
 
   useEffect(() => {
-  
+
     setCartData(userSuccessData.cart)
-  
-  
+
+
   }, [userSuccessData])
-  
+
 
 
 
@@ -36,7 +36,10 @@ export const Cart=()=>{
     const updatedCart = cartData?.map((item) =>
       item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
-    setCartData(updatedCart);
+
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
+      .then((res) => { setCartData(res?.data.cart) })
+
   };
 
   const decreaseQuantity = (itemId) => {
@@ -45,13 +48,24 @@ export const Cart=()=>{
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
-    setCartData(updatedCart);
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
+      .then((res) => { setCartData(res?.data.cart) })
   };
 
   const makePayment = async () => {
-    
+
   };
-console.log(cartData)
+
+  const deletehandle = (id) => {
+    const updatedCart = cartData?.filter((e) => {
+      return e.id !== id
+    })
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
+      .then((res) => { setCartData(res.data.cart) })
+      .catch((err) => console.log(err))
+  }
+
+
   return (
     <Container maxW="xl" mt={1}>
       <Heading>Your Shopping Cart</Heading>
@@ -94,7 +108,7 @@ console.log(cartData)
               </HStack>
             </VStack>
             <Spacer />
-            <Button colorScheme="red" size="sm">
+            <Button onClick={() => { deletehandle(item.id) }} colorScheme="red" size="sm">
               Remove
             </Button>
           </HStack>

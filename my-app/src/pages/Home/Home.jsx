@@ -85,7 +85,7 @@ export const Home = () => {
                     return
                 }
             })
-            if (flag == false) {
+            if (flag == false) {                
                 newdata.cart.push(e)
                 dispatch(postdata(isAuth, newdata.cart))
                 alert("item addedd to the cart")
@@ -173,6 +173,7 @@ export const Home = () => {
                         size='xl'
                     />}
                     {data?.map((e) => {
+                      
                         return (
                             <Box key={e?.id * Math.random()} className="itembox" padding={"20px"}  >
                                 <Image borderRadius={"20px"} height={"350px"} src={e?.image} width={"90%"} />

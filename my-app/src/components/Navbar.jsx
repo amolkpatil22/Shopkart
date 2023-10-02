@@ -81,7 +81,7 @@ export const Navbar = () => {
                 <Box width={"25%"} >
                     <Input value={searchvalue} borderRadius={"20px"} borderColor={"grey"} onChange={(e) => setsearchvalue(e.target.value)} placeholder="Search Product"></Input>
                     {searchdata.length !== 0 && <Box className="search" >
-                        {searchdata.length !== 0 && <Flex justifyContent={"right"}> <CloseIcon onClick={erase} fontSize={"xs"} /></Flex>}
+                        {searchdata.length !== 0 && <Flex justifyContent={"right"}> <CloseIcon cursor={"pointer"} onClick={erase} fontSize={"xs"} /></Flex>}
                         {searchdata.length !== 0 && searchdata?.map((e) => {
                             return (
                                 <Link key={e.id * Math.random()} to={`/product/${e.id}`} className="link">
