@@ -67,12 +67,16 @@ Member :- Subhash Rawat (https://github.com/Imsubhahs)
 
 ### Screenshots
 
+1.Home Page:-
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20143138.png)
 
+2.Product Page:
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20153649.png)
 
+3.Single Product Page:-
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20153745.png)
 
+4.Deals Page:-
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20154142.png)
 
 ## Creating A Pull Request
