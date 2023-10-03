@@ -33,7 +33,7 @@ export const Navbar = () => {
 
     useEffect(() => {
         if (isAuth) {
-            axios.get(`http://localhost:8080/userdata/${isAuth}`)
+            axios.get(`https://shopkart-payload.onrender.com/userdata/${isAuth}`)
                 .then((res) => { dispatch({ type: "update", payload: res.data }) })
         }
     }, [isAuth])

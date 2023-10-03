@@ -38,7 +38,7 @@ export const Login = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/userdata`)
+    axios.get(`https://shopkart-payload.onrender.com/userdata`)
       .then((res) => { setalluserdata(res.data) })
       .catch((err) => { console.log(err) })
   }, [])
