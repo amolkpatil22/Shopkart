@@ -77,7 +77,7 @@ export const Cart = () => {
         divider={<StackDivider />}
         spacing={4}
         mt={4}
-        width="100%"
+        width="80%"
       >
         {cartData?.map((item) => (
           <HStack key={item.id} width="100%">
