@@ -8,6 +8,7 @@ import { Profile } from "../pages/Profile/Profile"
 import ElectronicsList from "../pages/Products/Electronics/ElectronicsList"
 import SingleElectronics from "../pages/SingleProduct/SingleElectronics"
 import { Deal } from "../pages/Deal/Deal"
+import { OrderForm } from "../pages/Cart/OrderForm"
 
 
 
@@ -25,6 +26,7 @@ export const AllRoutes = () => {
             <Route path="/signUp" element={<SignupCard />} />
             <Route path="/product" element={<ElectronicsList />} />
             <Route path="/product/:id" element={<SingleElectronics />} />
+            <Route path="/payment" element={<OrderForm/>} />
         </Routes>
     )
 }

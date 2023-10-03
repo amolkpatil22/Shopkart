@@ -13,6 +13,7 @@ export const loginReducer = (state = initialState, { type, payload }) => {
         case LOGIN_SUCCESS:
             return { ...state, isLoading: false, isError: false, isAuth: payload.id, userSuccessData: payload }
         case "update": return { ...state, userSuccessData: payload }
+        case "loggedout": return { ...state, userSuccessData: {}, isAuth: false }
         default:
             return { ...state }
     }

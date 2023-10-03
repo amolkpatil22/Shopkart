@@ -1,10 +1,11 @@
-
 import React, { useState, useEffect, useMemo, memo } from 'react';
-import { Box, Heading, Text, Image, VStack, HStack, Button, Spacer, StackDivider, Container, } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, VStack, HStack, Button, Spacer, StackDivider, Container} from '@chakra-ui/react';
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
+  //const [isLargerThan450px] = useMediaQuery('(min-width: 450px)');
   //const stripePromise = loadStripe('pk_test_51NwhZLSG2DdjK2iecru6SmXEg4hif3HaKsAwcUHwZELTMpLM3cWcMQUzckaFuoVre8oi65WO7pEIco6EsoPm9Gum008dHzgXiF'); // Replace with your Stripe Publishable Key
 
   let { isAuth, userSuccessData } = useSelector((store) => {
@@ -36,8 +37,9 @@ export const Cart = () => {
     const updatedCart = cartData?.map((item) =>
       item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
-    setCartData(updatedCart)
-    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })    
+
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
+      .then((res) => { setCartData(res?.data.cart) })
 
   };
 
@@ -47,20 +49,23 @@ export const Cart = () => {
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
-    setCartData(updatedCart)
-    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })      
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
+      .then((res) => { setCartData(res?.data.cart) })
   };
 
-  const makePayment = async () => {
+  let navigate=useNavigate()
 
+  const makePayment =  () => {
+      navigate ("/payment")
   };
 
   const deletehandle = (id) => {
     const updatedCart = cartData?.filter((e) => {
       return e.id !== id
     })
-    setCartData(updatedCart)
-    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })    
+    axios.patch(`http://localhost:8080/userdata/${isAuth}`,{ cart: updatedCart })
+      .then((res) => { setCartData(res.data.cart) })
+      .catch((err) => console.log(err))
   }
 
 
