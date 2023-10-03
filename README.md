@@ -79,6 +79,10 @@ Member :- Subhash Rawat (https://github.com/Imsubhahs)
   
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20153745.png)
 
+* Cart Page:-
+
+![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20153930.png)  
+
 * Deals Page:-
   
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20154142.png)
