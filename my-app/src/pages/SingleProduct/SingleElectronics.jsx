@@ -12,24 +12,26 @@ import {
   Button,
   Grid,
   GridItem,
+  useToast,
 } from "@chakra-ui/react";
 import { fetchElectronics } from "../Products/ProductReducer/action";
-import {postdata} from "../Home/action"
-import { shallowEqual} from "react-redux"
+import { postdata } from "../Home/action"
+import { shallowEqual } from "react-redux"
 import { useNavigate } from "react-router-dom";
 
 const SingleElectronics = () => {
+  let toast = useToast()
   const { id } = useParams();
   let dispatch = useDispatch()
   let navigate = useNavigate()
   const [data, setData] = useState(null);
   const electronics = useSelector((store) => store.productReducer.product);
-  let {  isAuth, userSuccessData } = useSelector((store) => {
+  let { isAuth, userSuccessData } = useSelector((store) => {
     return {
-        isAuth: store.loginReducer.isAuth,
-        userSuccessData: store.loginReducer.userSuccessData,
+      isAuth: store.loginReducer.isAuth,
+      userSuccessData: store.loginReducer.userSuccessData,
     }
-}, shallowEqual)
+  }, shallowEqual)
 
   useEffect(() => {
     const product = electronics.find((el) => el.id === +id);
@@ -42,30 +44,40 @@ const SingleElectronics = () => {
     }
   }, [data])
 
-  
+
 
   const datapost = (e) => {
     if (isAuth == false) {
-        return navigate("/login")
+      return navigate("/login")
     }
     else {
-        let newdata = userSuccessData
-        let flag = false
-        newdata.cart.map((a) => {
-            if (a.id == e.id) {
-                flag = true
-                alert("item already in cart")
-                return
-            }
-        })
-        if (flag == false) {
-            newdata.cart.push(e)
-            dispatch(postdata(isAuth, newdata.cart))
-            alert("item addedd to the cart")
+      let newdata = userSuccessData
+      let flag = false
+      newdata.cart.map((a) => {
+        if (a.id == e.id) {
+          flag = true
+          toast({
+            title: 'Item Already In Cart',
+            status: 'warning',
+            duration: 2000,
+            isClosable: true,
+          });
+          return
         }
+      })
+      if (flag == false) {
+        newdata.cart.push(e)
+        dispatch(postdata(isAuth, newdata.cart))
+        toast({
+          title: 'Item Added To The Cart',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+      }
     }
 
-}
+  }
 
 
   return (
@@ -86,13 +98,13 @@ const SingleElectronics = () => {
             gap={5}
             margin="auto"
           >
-            
 
-           
+
+
             <GridItem colSpan={1} >
               <Image src={data?.image} alt="image" maxW="400px" />
             </GridItem>
-            
+
             <GridItem colSpan={1} width="500px">
 
               <Text fontSize="20px" fontWeight="bold" mt="2" >
@@ -108,7 +120,7 @@ const SingleElectronics = () => {
                 <br />
                 <Text fontSize="18px" textColor="gray.500">{data?.description}</Text>
                 <br />
-                
+
 
                 <Button
                   size={"lg"}
@@ -125,7 +137,7 @@ const SingleElectronics = () => {
               </VStack>
 
             </GridItem>
- 
+
           </Box>
         </Grid>
       </Container>
