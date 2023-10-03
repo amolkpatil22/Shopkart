@@ -67,7 +67,7 @@ Member :- Subhash Rawat (https://github.com/Imsubhahs)
 
 ### Screenshots
 
-1.Home Page:-
+* Home Page:-
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20143138.png)
 
 2.Product Page:
