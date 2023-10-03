@@ -7,7 +7,7 @@ export const fetchElectronics = (params) => (dispatch) => {
     dispatch({ type: PRODUCT_LOADING });
     axios({
         method: "get",
-        url: `http://localhost:8080/product`,
+        url: `https://shopkart-payload.onrender.com/product`,
         params: params
     })
         .then((res) => { dispatch({ type: FETCH_ELECTRONICS, payload: res.data }) })

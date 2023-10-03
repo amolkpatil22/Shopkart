@@ -345,7 +345,7 @@
           "price": 799.99,
           "description": "Experience contemporary luxury with our Contemporary Leather Sofa. This sleek and stylish sofa is upholstered in premium leather that not only looks sophisticated but also offers unmatched comfort. Its clean lines and tufted details add a modern touch to your living space. Crafted with precision and attention to detail, this sofa is the epitome of sophistication and comfort.",
           "subcategory": "Sofa",
-          "quantity": 1,
+          "quantity": 2,
           "brand": "ContempoLiving",
           "category": "furnitures"
         },
@@ -390,7 +390,19 @@
       "last_name": "Singh",
       "email": "wansh786@gmai.com",
       "password": "1234",
-      "cart": [],
+      "cart": [
+        {
+          "id": 2,
+          "title": "LG 55-Inch 4K OLED TV",
+          "image": "https://5.imimg.com/data5/DI/ZS/CP/SELLER-50489472/fortex-hd-ready-ips-led-tv.jpg",
+          "price": 1499.99,
+          "description": "Elevate your home entertainment with the LG 55-Inch 4K OLED TV. Immerse yourself in stunning 4K visuals with vibrant colors and perfect blacks. This smart TV offers access to your favorite streaming services and comes with AI ThinQ technology for voice control. Enjoy cinematic experiences in the comfort of your living room.",
+          "subcategory": "TV",
+          "quantity": 2,
+          "brand": "LG",
+          "category": "electronics"
+        }
+      ],
       "id": 6
     }
   ]
