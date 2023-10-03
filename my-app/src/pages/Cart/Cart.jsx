@@ -36,9 +36,8 @@ export const Cart = () => {
     const updatedCart = cartData?.map((item) =>
       item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
-
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
-      .then((res) => { setCartData(res?.data.cart) })
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })    
 
   };
 
@@ -48,8 +47,8 @@ export const Cart = () => {
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
-      .then((res) => { setCartData(res?.data.cart) })
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })      
   };
 
   const makePayment = async () => {
@@ -60,9 +59,8 @@ export const Cart = () => {
     const updatedCart = cartData?.filter((e) => {
       return e.id !== id
     })
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
-      .then((res) => { setCartData(res.data.cart) })
-      .catch((err) => console.log(err))
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })    
   }
 
 
