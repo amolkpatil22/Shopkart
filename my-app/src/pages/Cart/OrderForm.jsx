@@ -38,7 +38,7 @@ export const OrderForm=()=> {
 
       // Show toast message
       toast({
-        title: "Payment Successful",
+        title: "Order Placed",
         description: "Your payment was successful.",
         status: "success",
         duration: 4000, // Toast message duration in milliseconds

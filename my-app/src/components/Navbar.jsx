@@ -58,7 +58,7 @@ export const Navbar = () => {
                     <p >+001234567890</p>
                 </Flex>
                 <p>Get 50% Off on Selected Items    |    Shop Now</p>
-                <Flex>
+                <Flex >
                     <Select width={"fit-content"} border={"none"} >
                         <option value="eng">Eng</option>
                         <option value="arabic">Arabic</option>

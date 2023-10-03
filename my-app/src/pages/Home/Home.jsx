@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Spinner, Text, border } from "@chakra-ui/react"
+import { Box, Button, Center, Divider, Flex, Grid, Heading, Image, List, ListItem, Spinner, Text, border, useToast } from "@chakra-ui/react"
 import "./home.css"
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 import { useEffect, useRef, useState } from "react"
@@ -12,6 +12,7 @@ import axios from "axios"
 
 export const Home = () => {
     let ref = useRef(null)
+    let toast = useToast()
     let navigate = useNavigate()
     let [localfilter, setlocalfilter] = useState("")
     let [data, setdata] = useState([])
@@ -81,14 +82,24 @@ export const Home = () => {
             newdata.cart.map((a) => {
                 if (a.id == e.id) {
                     flag = true
-                    alert("item already in cart")
+                    toast({
+                        title: 'Item Already In Cart',
+                        status: 'warning',
+                        duration: 2000,
+                        isClosable: true,
+                    });
                     return
                 }
             })
-            if (flag == false) {                
+            if (flag == false) {
                 newdata.cart.push(e)
                 dispatch(postdata(isAuth, newdata.cart))
-                alert("item addedd to the cart")
+                toast({
+                    title: 'Item Added To The Cart',
+                    status: 'success',
+                    duration: 2000,
+                    isClosable: true,
+                });
             }
         }
 
@@ -165,15 +176,9 @@ export const Home = () => {
                 <Heading fontSize={"3xl"} marginLeft={"9%"} marginBottom={"40px"}>Todays Best Deals for you!</Heading>
                 <Grid className="itemgrid" ref={ref}>
                     <ChevronLeftIcon className="icon" id="previcon" onClick={handle} />
-                    {data == undefined && <Spinner
-                        thickness='4px'
-                        speed='0.65s'
-                        emptyColor='gray.200'
-                        color='green.500'
-                        size='xl'
-                    />}
+
                     {data?.map((e) => {
-                      
+
                         return (
                             <Box key={e?.id * Math.random()} className="itembox" padding={"20px"}  >
                                 <Image borderRadius={"20px"} height={"350px"} src={e?.image} width={"90%"} />
@@ -340,7 +345,7 @@ export const Home = () => {
                             <Box key={e?.id * Math.random()} className="itembox2" padding={"20px"}  >
                                 <Image src={e?.image} height={"200px"} borderRadius={"20px"} width={"90%"} />
                                 <Flex justifyContent={"space-between"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading fontSize={"xl"}>{e?.title}</Heading>
+                                    <Heading overflow={"hidden"} height={"80px"} fontSize={"xl"}>{e?.title}</Heading>
                                     <Heading fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
                                 <Text overflow={"hidden"} height={"45px"} width={"90%"} marginBottom={"10px"}>{e?.description}</Text>
@@ -384,7 +389,7 @@ export const Home = () => {
                         </Box>
                     </Box>
                 </Grid>
-            </Box>          
+            </Box>
         </Box>
     )
 }

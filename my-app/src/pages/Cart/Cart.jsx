@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, memo } from 'react';
-import { Box, Heading, Text, Image, VStack, HStack, Button, Spacer, StackDivider, Container} from '@chakra-ui/react';
+import { Box, Heading, Text, Image, VStack, HStack, Button, Spacer, StackDivider, Container } from '@chakra-ui/react';
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -37,10 +37,9 @@ export const Cart = () => {
     const updatedCart = cartData?.map((item) =>
       item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
-
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
-      .then((res) => { setCartData(res?.data.cart) })
-
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })
+      
   };
 
   const decreaseQuantity = (itemId) => {
@@ -49,23 +48,23 @@ export const Cart = () => {
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`, { cart: updatedCart })
-      .then((res) => { setCartData(res?.data.cart) })
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })
+
   };
 
-  let navigate=useNavigate()
+  let navigate = useNavigate()
 
-  const makePayment =  () => {
-      navigate ("/payment")
+  const makePayment = () => {
+    navigate("/payment")
   };
 
   const deletehandle = (id) => {
     const updatedCart = cartData?.filter((e) => {
       return e.id !== id
     })
-    axios.patch(`http://localhost:8080/userdata/${isAuth}`,{ cart: updatedCart })
-      .then((res) => { setCartData(res.data.cart) })
-      .catch((err) => console.log(err))
+    setCartData(updatedCart)
+    axios.patch(`https://shopkart-payload.onrender.com/userdata/${isAuth}`, { cart: updatedCart })
   }
 
 
