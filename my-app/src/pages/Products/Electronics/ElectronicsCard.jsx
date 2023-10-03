@@ -46,10 +46,10 @@ const ElectronicsCard = ({id,title, image, price, description, category, quantit
     <Card maxW="sm" width="90%" >
       <CardBody >
         <Link to= {`/product/${id}`}>
-          <Image src={image} borderRadius="lg" alt="Image"/>
+          <Image src={image} borderRadius="lg" alt="Image" height="200px" margin="auto"/>
         </Link>
         <Flex justifyContent={"space-between"}>
-         <Box>
+         <Box  >
          <Stack mt="6" spacing="3">
           <Heading size="md">{title}</Heading>
           <Text color="orange.500" fontSize="2xl">
