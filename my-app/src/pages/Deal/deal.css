@@ -2,6 +2,20 @@
     border-radius: 10px !important;
     margin-top: 10px;
 }
+.cross-between {
+    position: relative;
+    align-items: center;
+  }
+  
+  .cross-between::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid black;
+    align-items: center; 
+  }
 
 .dealimg{
     margin: auto;

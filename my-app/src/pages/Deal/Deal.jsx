@@ -184,11 +184,14 @@ export const Deal = () => {
                                     <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'} border-radius='10%'>Hot Deal</Heading>
                                 </Flex >
                                 <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading  fontSize={"xl"}>{e?.title}</Heading>
-                                    <Heading color={"green"} fontSize={"xl"}>${e?.price}</Heading>
+                                    <Heading  fontSize={"l"}>{e?.title}</Heading>
+                                    <Box className="cross-between">
+                                        <Heading  color={"orange"} fontSize={"xl"}>${e?.price}</Heading>
+                                    </Box>
+                                    
                                 </Flex >
                                 <p className="description" >{e?.description}</p>
-                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <Heading  borderRadius={"10px"} color={"green"} fontSize={"l"} backgroundColor={"rgb(239, 194, 123)"} padding="10px">Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <br />
                                 <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }} size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"} padding={'10px'}>Add to Cart</Button>
                             </Box>
@@ -220,10 +223,10 @@ export const Deal = () => {
                                 </Flex >
                                 <Flex gap={"10px"} width={"90%"} marginBottom={"10px"}>
                                     <Heading overflow={"hidden"} maxHeight={"20px"}  fontSize={"lg"}>{e?.title}</Heading>
-                                    <Heading fontSize={"xl"}>${e?.price}</Heading>
+                                    <Heading className="cross-between" color={"orange"} fontSize={"xl"}>${e?.price}</Heading>
                                 </Flex >
                                 <Text overflow={"hidden"} height={"45px"} width={"90%"} marginBottom={"10px"}>Exclusive discount, don't miss out!</Text>
-                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(239, 194, 123)"} padding="10px" color={'green'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <br />
                                 <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
@@ -247,11 +250,11 @@ export const Deal = () => {
                                     <Heading className="offer" fontSize={"xs"} backgroundColor={"rgb(232, 59, 59)"} padding="10px" color={'white'}>Best Deal</Heading>
                                 </Flex >
                                 <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
-                                    <Heading overflow={"hidden"} maxHeight={"20px"} fontSize={"xl"}>{e.title}</Heading>
-                                    <Heading fontSize={"xl"}>${e.price}</Heading>
+                                    <Heading overflow={"hidden"} maxHeight={"20px"} fontSize={"l"}>{e.title}</Heading>
+                                    <Heading className="cross-between" color={"orange"} fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
                                 <Text textOverflow={"clip"} width={"90%"} marginBottom={"10px"}>Exclusive discount, don't miss out!</Text>
-                                <Heading  borderRadius={"10px"} fontSize={"xl"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(239, 194, 123)"} padding="10px" color={'green'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <Text overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.color}</Text>
                                 <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
@@ -277,10 +280,10 @@ export const Deal = () => {
                                 </Flex >
                                 <Flex  gap={"10px"} width={"90%"} marginBottom={"10px"}>
                                     <Heading overflow={"hidden"} maxHeight={"20px"} fontSize={"xl"}>{e.title}</Heading>
-                                    <Heading fontSize={"xl"}>${e.price}</Heading>
+                                    <Heading  className="cross-between" color={"orange"}  fontSize={"xl"}>${e.price}</Heading>
                                 </Flex >
                                 <Text textOverflow={"clip"} width={"90%"} marginBottom={"10px"}>Limited-time deal: Grab it now!</Text>
-                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(236, 158, 34)"} padding="10px" color={'white'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
+                                <Heading  borderRadius={"10px"} fontSize={"l"} backgroundColor={"rgb(239, 194, 123)"} padding="10px" color={'green'}>Offer Price: ${Math.floor(e.price - (e.price * offer / 100))}</Heading>
                                 <Text overflow={"hidden"} width={"90%"} marginBottom={"10px"}>{e.color}</Text>
                                 <Button onClick={() => { datapost(e, Math.floor(e.price - (e.price * offer / 100))) }}  size={"lg"} colorScheme="green" backgroundColor={"rgb(0,61,41)"} width={"150px"} borderRadius={"30px"}>Add to Cart</Button>
                             </Box>
