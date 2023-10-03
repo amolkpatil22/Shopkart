@@ -1,98 +1,108 @@
-import { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
-  Heading,
-  VStack,
   Input,
-  Radio,
-  RadioGroup,
   Button,
-  useMediaQuery, // Import useMediaQuery
-} from '@chakra-ui/react';
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  useToast,
+} from "@chakra-ui/react";
+import { useHistory } from "react-router-dom"; // Import useHistory for navigation
+import { useNavigate } from 'react-router-dom';
 
-export const OrderForm = () => {
-  const [isLargerThan450px] = useMediaQuery('(min-width: 450px)'); // Check screen size
 
+export const OrderForm=()=> {
   const [formData, setFormData] = useState({
-    fullName: '',
-    address: '',
-    email: '',
-    contactNumber: '',
-    zipCode: '',
-    paymentMethod: 'card', // Default payment method
+    name: "",
+    cardNumber: "",
+    expirationDate: "",
+    cvv: "",
   });
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
+  const toast = useToast(); // Create a toast instance
+  //const history = useHistory(); // Create a history instance for navigation
+  let navigate=useNavigate()
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
+ 
+  const handlePayment = () => {
+    // You can implement your payment processing logic here.
+    // For this example, we'll simulate a successful payment after a delay.
+    setTimeout(() => {
+      setPaymentSuccess(true);
 
-  const handleSubmit = () => {
-    // Add your logic here to handle the form submission
-    console.log(formData);
+      // Show toast message
+      toast({
+        title: "Payment Successful",
+        description: "Your payment was successful.",
+        status: "success",
+        duration: 4000, // Toast message duration in milliseconds
+        isClosable: true,
+      });
+
+      // Navigate to the home page after a successful payment
+      navigate ("/");
+    }, 2000);
   };
 
   return (
-    <Box p={4}>
-      <Heading as="h1" mb={4}>
-        Order Address
-      </Heading>
-      <VStack spacing={4}>
-        <Input
-          type="text"
-          name="fullName"
-          placeholder="Full Name"
-          value={formData.fullName}
-          onChange={handleChange}
-        />
-        <Input
-          type="text"
-          name="address"
-          placeholder="Address"
-          value={formData.address}
-          onChange={handleChange}
-        />
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <Input
-          type="tel"
-          name="contactNumber"
-          placeholder="Contact Number"
-          value={formData.contactNumber}
-          onChange={handleChange}
-        />
-        <Input
-          type="text"
-          name="zipCode"
-          placeholder="Zip Code"
-          value={formData.zipCode}
-          onChange={handleChange}
-        />
-        <RadioGroup
-          name="paymentMethod"
-          value={formData.paymentMethod}
-          onChange={handleChange}
-        >
-          Payment Option
-          <Radio value="card">Card</Radio>
-          <Radio value="upi">UPI</Radio>
-        </RadioGroup>
-        <Button
-          colorScheme="blue"
-          onClick={handleSubmit}
-          width={isLargerThan450px ? 'auto' : '100%'} // Adjust button width based on screen size
-        >
-          Place Order
-        </Button>
-      </VStack>
+    <Box maxW="40%" mx="auto" mt="4" p="4">
+      {paymentSuccess ? (
+        <Alert status="success">
+          <AlertIcon />
+          <AlertTitle>Payment Successful</AlertTitle>
+          <AlertDescription>Your payment was successful.</AlertDescription>
+        </Alert>
+      ) : (
+        <form>
+          <Input
+            type="text"
+            name="name"
+            placeholder="Name on Card"
+            value={formData.name}
+            onChange={handleChange}
+            mb="2"
+          />
+          <Input
+            type="text"
+            name="cardNumber"
+            placeholder="Card Number"
+            value={formData.cardNumber}
+            onChange={handleChange}
+            mb="2"
+          />
+          <Input
+            type="text"
+            name="expirationDate"
+            placeholder="Expiration Date"
+            value={formData.expirationDate}
+            onChange={handleChange}
+            mb="2"
+          />
+          <Input
+            type="text"
+            name="cvv"
+            placeholder="CVV"
+            value={formData.cvv}
+            onChange={handleChange}
+            mb="2"
+          />
+          <Button
+            colorScheme="teal"
+            onClick={handlePayment}
+            mt="4"
+            isFullWidth
+          >
+            Make Payment
+          </Button>
+        </form>
+      )}
     </Box>
   );
-};
+}
+
