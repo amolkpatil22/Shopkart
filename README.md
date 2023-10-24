@@ -1,14 +1,12 @@
 # stoic-sack-3017
-The ShopCart E-Commerce Store project is a collaborative effort by a team of five talented individuals dedicated to providing a dynamic and streamlined online shopping experience in the realm of fashion and other households retail. This e-commerce platform, named "ShopCart," capitalizes on modern web technologies to offer a visually stunning and user-friendly interface. It's built on React for the frontend, backed by a RESTful API for data interaction, and utilizes HTML, JavaScript, CSS, and Tailwind CSS for style and functionality.
-
 ### ShopCart
 
 ![image](https://github.com/amolkpatil22/stoic-sack-3017/blob/main/my-app/src/logo/Screenshot%202023-10-03%20142801.png)
 
-
 # Project Code:- stoic-sack-3017
 
-
+## Description:
+The ShopCart E-Commerce Store project is a collaborative effort by a team of five talented individuals dedicated to providing a dynamic and streamlined online shopping experience in the realm of fashion and other households retail. This e-commerce platform, named "ShopCart," capitalizes on modern web technologies to offer a visually stunning and user-friendly interface. It's built on React for the frontend, backed by a RESTful API for data interaction, and utilizes HTML, JavaScript, CSS, and Tailwind CSS for style and functionality.
 
 # ShopCart Clone
 This project is a clone of the Indian online classifieds platform, ShopCart. The aim of this project is to replicate the basic functionality and design of ShopCat using HTML, CSS, and JavaScript, ReactJs and Redux.
